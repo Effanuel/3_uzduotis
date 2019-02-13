@@ -37,11 +37,12 @@ int main()
 	size_t size = nd.size();
 	const double mediana = median(size, nd);
 	const double vidurkis = std::accumulate(nd.begin(), nd.end(), 0.0) / nd.size();
-	const double galutinis = 0.4 * vidurkis + 0.6 * egz;
+	const double galutinis_vid = 0.4 * vidurkis + 0.6 * egz;
+	const double galutinis_med = 0.4 * mediana + 0.6 * egz;
 
 	printf("%*s %*s %*s %s\n", -int(pavarde.length()) -7, "Pavarde", -int(vardas.length()) - 7, "Vardas", -19, "VidGalutinis", "MedGalutinis");
 	printf("%s\n", std::string(int(pavarde.length()) + int(vardas.length()) + 14 + 14 + 12 + 8, '-').c_str());
-	printf("%*s %*s %*.2f %.2f\n", -int(pavarde.length()) - 7, pavarde.c_str(), -int(vardas.length()) - 7, vardas.c_str(), -19, galutinis, mediana);
+	printf("%*s %*s %*.2f %.2f\n", -int(pavarde.length()) - 7, pavarde.c_str(), -int(vardas.length()) - 7, vardas.c_str(), -19, galutinis_vid, galutinis_med);
 
 
 }
