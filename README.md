@@ -13,7 +13,7 @@ atsitiktinai (penki balai kaip *default*).
 ```
 Pavardė    Vardas       Galutinis (Vid.)  Galutinis (Med.)
 ---------------------------------------------------------
-Juozas     Rimantas      x.xx             x.xx
+Juozas     Rimantas      8.60            9.20
 ```
 
 
