@@ -15,6 +15,14 @@ Pavardė    Vardas       Galutinis (Vid.)  Galutinis (Med.)
 ---------------------------------------------------------
 Juozas     Rimantas      8.60            9.20
 ```
+## Paleidimas (Windows)
+```
+git clone https://github.com/Effanuel/Duomenu-apdorojimas
+cd Duomenu-apdorojimas
+g++ -std=c++11 DuomenuApdorojimas.cpp -o DuomenuApdorojimas
+./DuomenuApdorojimas
+```
+
 
 ## [v0.1](https://github.com/Effanuel/Duomenu-apdorojimas/releases/tag/v0.1)
 
