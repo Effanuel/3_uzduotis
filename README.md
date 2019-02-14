@@ -15,10 +15,10 @@ Pavardė    Vardas       Galutinis (Vid.)  Galutinis (Med.)
 ---------------------------------------------------------
 Juozas     Rimantas      8.60            9.20
 ```
-## Paleidimas (Windows)(Command-line)
+## Paleidimas (Command-line)
 ```
 make all;
-./DuomenuApdorojimas
+./DuomenuApdorojimas;
 ```
 
 
