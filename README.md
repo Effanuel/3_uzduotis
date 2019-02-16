@@ -22,5 +22,7 @@ make all;
 ```
 
 
-## [v0.1](https://github.com/Effanuel/Duomenu-apdorojimas/releases/tag/v0.1)
+## [v0.11](https://github.com/Effanuel/Duomenu-apdorojimas/releases/tag/v0.11)
+## [v0.2](https://github.com/Effanuel/Duomenu-apdorojimas/releases/tag/v0.2)
+
 
