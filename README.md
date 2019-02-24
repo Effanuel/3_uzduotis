@@ -30,4 +30,32 @@ Vardas1     Pavardė1    8    9     10   6    10   9
 Vardas2     Pavardė2    7    10    8    5    4    6
 ...
 ```
+## [v0.3](https://github.com/Effanuel/Duomenu-apdorojimas/releases/tag/v0.3)
+## [v0.4](https://github.com/Effanuel/Duomenu-apdorojimas/releases/tag/v0.4)
+#### Testavimas (*failų generavimas su skirtingais```vector<struct Items>``` kiekiais*)
 
+```
+(n = 10):        0.0304797 s
+(n = 100):       0.0401614 s
+(n = 1,000):     0.0287955 s
+(n = 10,000):    0.105775 s
+(n = 100,000):   0.584414 s
+(n = 1,000,000): 5.4271 s
+```
+
+### Generuoti failo formatai yra tokie:
+```
+KIETI
+Pavardė     Vardas      ND1  ND2   ND3  ND4  ND5  Galutinis_balas(Med.)
+Vardas2     Pavardė2    7    10    8    5    4    6
+Vardas1     Pavardė1    8    9     10   6    10   9
+...
+```
+```
+SILPNI
+Pavardė     Vardas      ND1  ND2   ND3  ND4  ND5  Galutinis_balas(Med.)
+Vardas2     Pavardė2    1    2    1    4    1     2
+Vardas1     Pavardė1    3    5     1    2    3    4
+
+...
+```
