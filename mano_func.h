@@ -6,6 +6,9 @@
 #include <vector>
 #include <fstream>
 #include <typeinfo>
+#include <chrono>
+#include <random>
+#include <iomanip>
 
 using std::cout;
 using std::cin;
@@ -16,15 +19,136 @@ using std::vector;
 using std::string;
 
 
+class Timer {
+private:
+	using hrClock = std::chrono::high_resolution_clock;
+	using durationDouble = std::chrono::duration<double>;
+	std::chrono::time_point<hrClock> start;
+public:
+	Timer() : start{ hrClock::now() } {}
+	void reset() {
+		start = hrClock::now();
+	}
+	double elapsed() const {
+		return durationDouble(hrClock::now() - start).count();
+	}
+};
+
+
+
+
 struct Items
 {
-	string vardas{}, pavarde{};
-	double final_med{}, final_vid{};
-	vector<int> balai{};
-	int egz{};
+	string vardas, pavarde;
+	double final_med, final_vid;
+	vector<int> balai;
+	int egz;
 
 
 };
+
+
+
+int max_len(vector<string>);
+bool alphabetical_sorting(const Items &, const Items &);
+double median(std::vector<int>, size_t, int);
+double vidurkis(std::vector<int>, size_t, int);
+bool final_mark_sorting(const Items &, const Items &);
+
+
+
+void Sukurti_studenta(vector<Items>&, string, string, vector<int>, int); //&
+vector<Items> generateStudents(unsigned int);
+bool find_split_mark(Items&);
+
+vector<Items> split_students(vector<Items>&);
+
+void writeToFile(vector<Items>&, string);
+void generateFile(vector<Items>&, vector<Items>&);
+
+int cin_and_checkFormat();
+void Rankinis_ivedimas(vector<int>&, int&);
+void Failo_nuskaitymas(vector<Items>&, string, vector<string>&, vector<string>&);
+void random_num_generator(vector<int>&, int&);
+void Duomenu_ivedimas(vector<Items>&, vector<int>&, vector<string>&, vector<string>&);
+void Print_table(vector<Items>, int, int);
+
+
+
+
+bool final_mark_sorting(const Items &a, const Items &b)
+{
+	return a.final_med < b.final_med;
+}
+
+void Sukurti_studenta(vector<Items>& Studentai, string vardas, string pavarde, vector<int> balai, int egz) { //&
+	size_t dydis_balu = balai.size() ? balai.size() : 1;
+	const double galutinis_vid = vidurkis(balai, dydis_balu, egz);
+	const double galutinis_med = median(balai, dydis_balu, egz);
+
+	Studentai.push_back({ vardas, pavarde, galutinis_med, galutinis_vid, balai, egz });
+}
+
+
+
+vector<Items> generateStudents(unsigned int n) {
+	vector<Items> Studentai;
+	Studentai.reserve(n);
+
+	vector<int> temp_balai;
+
+	std::mt19937 gen;
+	gen.seed(std::random_device()());
+	std::uniform_real_distribution<double> distr(1, 10);
+
+	for (int i = 0; i < n; ++i) {
+
+		for (int j = 0; j < 5; ++j) {
+			temp_balai.push_back(distr(gen));
+		}
+
+		Sukurti_studenta(Studentai, "Vardas" + std::to_string(i), "Pavarde" + std::to_string(i), temp_balai, (int)(distr(gen)));
+		temp_balai.clear();
+	}
+	sort(Studentai.begin(), Studentai.end(), final_mark_sorting);
+	return Studentai;
+}
+
+bool find_split_mark(Items& n) {
+	return n.final_med >= 5.0;
+}
+
+vector<Items> split_students(vector<Items>& Studentai1) {
+	vector<Items> Studentai2;
+	Studentai2.reserve(100);
+	auto it = std::distance(Studentai1.begin(), std::find_if(Studentai1.begin(), Studentai1.end(), find_split_mark));
+	std::move(Studentai1.begin(), Studentai1.begin() + it, std::back_inserter(Studentai2));
+	Studentai1.erase(Studentai1.begin(), Studentai1.begin() + it);
+	return Studentai2;
+}
+
+
+
+
+
+void writeToFile(vector<Items>& Studentai, string file_name) {
+	std::ofstream failas(file_name);
+	for (auto& studentas : Studentai) {
+		failas << studentas.vardas << ' ' << studentas.pavarde << '\t';
+		for (auto& balas : studentas.balai) {
+			failas << balas << '\t';
+		}
+		failas << std::setprecision(3) << studentas.final_med << '\n';
+	}
+	failas.close();
+}
+
+
+void generateFile(vector<Items>& Studentai_kieti, vector<Items>& Studentai_silpni) {
+	writeToFile(Studentai_kieti, "OUTPUT_KIETI.txt");
+	writeToFile(Studentai_silpni, "OUTPUT_SILPNI.txt");
+}
+
 
 
 int max_len(vector<string> data) {
@@ -34,11 +158,12 @@ int max_len(vector<string> data) {
 }
 
 
-
 bool alphabetical_sorting(const Items &a, const Items &b)
 {
 	return a.pavarde < b.pavarde;
 }
+
+
 
 
 int cin_and_checkFormat() {
@@ -46,7 +171,7 @@ int cin_and_checkFormat() {
 	while (true) {
 		try {
 			cin >> input;
-			if (cin.fail()) throw 1;
+			if (cin.fail() || input > 10) throw 1;
 			return input;
 		} catch (int err) {
 			cout << "Netinkamas balo formatas. Iveskite is naujo:\n";
@@ -94,13 +219,6 @@ double vidurkis(std::vector<int> arr, size_t size, int egz) {
 
 
 
-void Sukurti_studenta(vector<Items>& Studentai, string vardas, string pavarde, vector<int> balai, int egz) { //&
-	size_t dydis_balu = balai.size() ? balai.size() : 1;
-	const double galutinis_vid = vidurkis(balai, dydis_balu, egz);
-	const double galutinis_med = median(balai, dydis_balu, egz);
-
-	Studentai.push_back({ vardas, pavarde, galutinis_med, galutinis_vid, balai, egz });
-}
 
 
 
@@ -154,12 +272,16 @@ void Failo_nuskaitymas(vector<Items>& Studentai, string file_name, vector<string
 }
 
 void random_num_generator(vector<int>& balai, int& egz) {
-	srand(time(NULL));
+
+	static std::mt19937 gen;
+	gen.seed(std::random_device()());
+	static std::uniform_real_distribution<double> distr(1, 10);
+
 	balai.resize(5); //5 namu darbai
 	generate(balai.begin(), balai.end(), []() {
-		return rand() % 10 + 1;
+		return (int)(distr(gen));
 	});
-	egz = rand() % 10 + 1;
+	egz = (int)distr(gen);
 }
 
 
@@ -193,9 +315,6 @@ void Duomenu_ivedimas(vector<Items>& Studentai, vector<int>& balai, vector<strin
 	Sukurti_studenta(Studentai, vardas, pavarde, balai, egz);
 
 }
-
-
-
 
 
 
