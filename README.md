@@ -6,7 +6,8 @@
 ```galutinis_vid = 0.4 * vidurkis + 0.6 * egzaminas```<br/>ir **medianą**:<br/>
 ```galutinis_med = 0.4 * vidurkis + 0.6 * egzaminas```
 4. Taip pat galima pasirinkti, jog namų darbų rezultatai bei egzamino balas būtų sugeneruojami
-atsitiktinai (penki balai kaip *default*).
+atsitiktinai (penki balai kaip *default*);<br/>
+5. **(v0.4)** Generuoja failus su skirtingais Studentų kiekiais.<br/>
 
 ### Rezultatas:
 ```
