@@ -8,6 +8,8 @@
 4. Taip pat galima pasirinkti, jog namų darbų rezultatai bei egzamino balas būtų sugeneruojami
     atsitiktinai (penki balai kaip *default*);<br/>
 5. **(v0.4)** Generuoja failus su skirtingais Studentų kiekiais.<br/>
+5. **(v0.5)** Generuoja failus su skirtingais STL container'iais.<br/>
+6. **(v0.5)** Matuoja programos veikimo greitį.<br/>
 
 ### Rezultatas:
 ```
