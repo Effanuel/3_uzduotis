@@ -1,6 +1,6 @@
 # 2 oji uzduotis (Duomenų apdorojimas)
-### Programos veikimo principas(nuo v0.1)
-#### Įvedimas: 
+## Programos veikimo principas
+#### Įvedimas(nuo v0.1): 
 1. Nuskaito vieno studento duomenis: **vardą** ir **pavardę**;
 2. **n** atliktų namų darbų rezultatus (10-balėje sistemoje), o taip pat egzamino rezultatą;
 3. Tuomet iš šių duomenų, suskaičiuoja galutinius balus<br/>pagal **vidurkį**:<br/> 
@@ -15,7 +15,7 @@ Pavardė    Vardas       Galutinis (Vid.)  Galutinis (Med.)
 ---------------------------------------------------------
 Juozas     Rimantas      8.60            9.20
 ```
-
+---
 #### Nuskaitymas(nuo v0.2):
 1. Nuskaito failą pagal tokį formatą:
 ```
@@ -31,7 +31,7 @@ Pavardė    Vardas       Galutinis (Vid.)  Galutinis (Med.)
 Vardas1     Pavardė1      8.60            9.20
 Vardas2     Pavardė2      7.20            9.10
 ```
-
+---
 #### Generavimas(nuo v0.4):
 1. Generuoja failus su skirtingais Studentų kiekiais.
 2. **(v0.5)** Generuoja failus su skirtingais STL container'iais.<br/>
