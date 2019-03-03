@@ -20,8 +20,10 @@ Juozas     Rimantas      8.60            9.20
 make all;
 ./DuomenuApdorojimas;
 ```
-[v0.5](https://github.com/Effanuel/Duomenu-apdorojimas/releases/tag/v0.5)
+## [v0.5](https://github.com/Effanuel/Duomenu-apdorojimas/releases/tag/v0.5)
 
+
+#### Failo generavimo greičių laikai su STL container'iais 
 *(Generavimo laikai apskaičiuoti pagal 20 matavimų vidurkį)*
 
 | Studentų skaičius:     | 10        | 100       | 1,000     | 10,000    | 100,000   | 1,000,000 |
