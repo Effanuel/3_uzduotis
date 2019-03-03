@@ -1,5 +1,6 @@
 # 2 oji uzduotis (Duomenų apdorojimas)
-### Programos veikimo principas(v0.1)
+### Programos veikimo principas(nuo v0.1)
+#### Įvedimas: 
 1. Nuskaito vieno studento duomenis: **vardą** ir **pavardę**;
 2. **n** atliktų namų darbų rezultatus (10-balėje sistemoje), o taip pat egzamino rezultatą;
 3. Tuomet iš šių duomenų, suskaičiuoja galutinius balus<br/>pagal **vidurkį**:<br/> 
@@ -7,9 +8,6 @@
     ```galutinis_med = 0.4 * vidurkis + 0.6 * egzaminas```
 4. Taip pat galima pasirinkti, jog namų darbų rezultatai bei egzamino balas būtų sugeneruojami
     atsitiktinai (penki balai kaip *default*);<br/>
-5. **(v0.4)** Generuoja failus su skirtingais Studentų kiekiais.<br/>
-5. **(v0.5)** Generuoja failus su skirtingais STL container'iais.<br/>
-6. **(v0.5)** Matuoja programos veikimo greitį.<br/>
 
 ### Rezultatas:
 ```
@@ -17,6 +15,29 @@ Pavardė    Vardas       Galutinis (Vid.)  Galutinis (Med.)
 ---------------------------------------------------------
 Juozas     Rimantas      8.60            9.20
 ```
+
+#### Nuskaitymas(nuo v0.2):
+1. Nuskaito failą pagal tokį formatą:
+```
+Pavardė     Vardas      ND1  ND2   ND3  ND4  ND5  Galutinis_balas(Med.)
+Vardas2     Pavardė2    7    10    8    5    4    6
+Vardas1     Pavardė1    8    9     10   6    10   9
+...
+```
+ir išveda tokią lentelę į konsolę*(abėcėlės tvarka)*:
+```
+Pavardė    Vardas       Galutinis (Vid.)  Galutinis (Med.)
+---------------------------------------------------------
+Vardas1     Pavardė1      8.60            9.20
+Vardas2     Pavardė2      7.20            9.10
+```
+
+#### Generavimas(nuo v0.4):
+1. Generuoja failus su skirtingais Studentų kiekiais.
+2. **(v0.5)** Generuoja failus su skirtingais STL container'iais.<br/>
+3. **(v0.5)** Matuoja programos veikimo greitį.<br/>
+
+
 ## Paleidimas (Command-line)
 ```
 make all;
