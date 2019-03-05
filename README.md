@@ -36,13 +36,14 @@ Vardas2     Pavardė2      7.20            9.10
 1. Generuoja failus su skirtingais Studentų kiekiais.
 2. **(v0.5)** Generuoja failus su skirtingais STL container'iais.<br/>
 3. **(v0.5)** Matuoja programos veikimo greitį.<br/>
-
+---
 
 ## Paleidimas (Command-line)
 ```
 make all;
 ./DuomenuApdorojimas;
 ```
+---
 ## [v0.5](https://github.com/Effanuel/Duomenu-apdorojimas/releases/tag/v0.5)
 
 
@@ -54,9 +55,7 @@ make all;
 | **vector** laikas in s | 0.0081274 | 0.0089709 | 0.0163225 | 0.0679107 | 0.5669360 | 5.59581   |
 | **list** laikas in s   | 0.0081211 | 0.0085473 | 0.0156446 | 0.0702477 | 0.6124770 | 6.49375   |
 | **deque** laikas in s  | 0.0075034 | 0.0095593 | 0.0158286 | 0.0708954 | 0.5846350 | 5.89265   |
-
-
-
+---
 
 ## [v0.4](https://github.com/Effanuel/Duomenu-apdorojimas/releases/tag/v0.4)
 #### Testavimas (*failų generavimas su skirtingais```vector<struct Items>``` kiekiais*)
@@ -86,9 +85,10 @@ Vardas1     Pavardė1    3    5     1    2    3    4
 
 ...
 ```
+---
 
 ## [v0.3](https://github.com/Effanuel/Duomenu-apdorojimas/releases/tag/v0.3)
-
+---
 ## [v0.2](https://github.com/Effanuel/Duomenu-apdorojimas/releases/tag/v0.2)
 ### Failo formatas turi būti toks:
 ```
@@ -97,7 +97,6 @@ Vardas1     Pavardė1    8    9     10   6    10   9
 Vardas2     Pavardė2    7    10    8    5    4    6
 ...
 ```
-
+---
 ## [v0.11](https://github.com/Effanuel/Duomenu-apdorojimas/releases/tag/v0.11)
-
 
