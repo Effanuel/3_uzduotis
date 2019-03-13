@@ -24,12 +24,13 @@ Vardas2     Pavardė2    7    10    8    5    4    6
 Vardas1     Pavardė1    8    9     10   6    10   9
 ...
 ```
-   ir išveda tokią lentelę į konsolę*(abėcėlės tvarka)*:
+   ir išveda tokią lentelę į konsolę *(abėcėlės tvarka)*:
 ```
 Pavardė    Vardas       Galutinis (Vid.)  Galutinis (Med.)
 ---------------------------------------------------------
 Vardas1     Pavardė1      8.60            9.20
 Vardas2     Pavardė2      7.20            9.10
+...
 ```
 ---
 ### Generavimas(nuo v0.4):
