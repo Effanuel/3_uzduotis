@@ -45,7 +45,7 @@ make all;
 ./DuomenuApdorojimas;
 ```
 ---
-## [v1.0](https://github.com/Effanuel/Duomenu-apdorojimas/releases/tag/v0.5)
+## [v1.0](https://github.com/Effanuel/Duomenu-apdorojimas/releases/tag/v1.0)
 
 ### Strategija #1 *(std::partition_copy)*
 #### Failo generavimo greičių laikai su STL container'iais 
