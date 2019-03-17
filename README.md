@@ -38,11 +38,9 @@ Vardas2     Pavardė2      7.20            9.10
 2. **(v0.5)** Generuoja failus su skirtingais STL container'iais.<br/>
 3. **(v0.5)** Matuoja programos veikimo greitį.<br/>
 ---
-
-### Nuskaitymas(nuo v0.2):
+### Final(nuo v1.0):
 1. Galima pasirinkti sugeneruoti failus
 2. Galima pasirinkti STL testavimą
-
 ---
 
 ## Paleidimas (Command-line)
