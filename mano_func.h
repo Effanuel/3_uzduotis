@@ -1,6 +1,6 @@
 #pragma once
 
-
+#include "Algoritmai.h"
 #include <iostream>
 #include <algorithm> //sort
 #include <numeric> //accumulate
@@ -47,41 +47,9 @@ public:
 
 
 
-struct Items
-{
-	string vardas, pavarde;
-	double final_med, final_vid;
-	vector<int> balai;
-	int egz;
-};
-
-
-namespace Custom {
-	void sort(vector<Items>&);
-	void sort(list<Items>&);
-	void sort(deque<Items>&);
-}
-
-
-
-
-bool alphabetical_sorting(const Items &, const Items &);
-bool final_mark_sorting(const Items &, const Items &);
-bool find_split_mark(Items&);
-
-int max_len(vector<string>);
-double median(std::vector<int>, size_t, int);
-double vidurkis(std::vector<int>, size_t, int);
-
-
 int cin_and_checkFormat_in_interval(int, int);
 void random_num_generator(vector<int>&, int&);
-
 void Rankinis_ivedimas(vector<int>&, int&);
-
-
-
-
 
 
 
@@ -93,18 +61,30 @@ template <typename T> void Sukurti_studenta(T& Studentai, string vardas, string 
 	Studentai.push_back({ vardas, pavarde, galutinis_med, galutinis_vid, balai, egz });
 }
 
-
 template <typename T> void writeToFile(T& Studentai, string file_name) {
 	std::ofstream failas(file_name);
 	for (auto& studentas : Studentai) {
-		failas << studentas.vardas << ' ' << studentas.pavarde << '\t';
+		failas << '\n' << studentas.vardas << '\t' << studentas.pavarde << '\t';
 		for (auto& balas : studentas.balai) {
 			failas << balas << '\t';
 		}
-		failas << std::setprecision(3) << studentas.final_med << '\n';
+		failas << std::setprecision(3) << studentas.final_med;
 	}
 	failas.close();
 }
+
+template <typename T> void writeToFile_egz(T& Studentai, string file_name) {
+	std::ofstream failas(file_name);
+	for (auto& studentas : Studentai) {
+		failas << '\n' << studentas.vardas << '\t' << studentas.pavarde << '\t';
+		for (auto& balas : studentas.balai) {
+			failas << balas << '\t';
+		}
+		failas << studentas.egz;;
+	}
+	failas.close();
+}
+
 
 
 template <typename T> void generateFile(T& Studentai_kieti, T& Studentai_silpni) {
@@ -114,11 +94,10 @@ template <typename T> void generateFile(T& Studentai_kieti, T& Studentai_silpni)
 
 
 
-template <typename T> void Failo_generavimas(unsigned const int n = 100) {
+template <typename T> void Failo_generavimas_OUTDATED(int strategija, unsigned const int n = 100) {
 	//Studentai.reserve(n);
 	T Studentai;
-	T Studentai_KIETI{};
-	T Studentai_LEVI{};
+
 	
 	
 	//Studentai2.reserve(100);
@@ -127,7 +106,7 @@ template <typename T> void Failo_generavimas(unsigned const int n = 100) {
 
 	std::mt19937 gen;
 	gen.seed(std::random_device()());
-	std::uniform_real_distribution<double> distr(1, 10);
+	std::uniform_int_distribution<int> distr(1, 10);
 
 	for (int i = 0; i < n; ++i) {
 
@@ -139,37 +118,137 @@ template <typename T> void Failo_generavimas(unsigned const int n = 100) {
 		temp_balai.clear();
 	}
 
-	Custom::sort(Studentai); // sortina pagal galutinius pazymius
-
-	//---------split_students()-------------
-
-	//auto it = std::distance(Studentai.begin(), std::find_if(Studentai.begin(), Studentai.end(), find_split_mark));
-	//v0.4 -- neveikia su std::list, std::deque
-	//std::move(Studentai.begin(), Studentai.begin() + it, std::back_inserter(Studentai2));
-	//Studentai.erase(Studentai.begin(), Studentai.begin() + it);
-
-
-	//v0.5 -- veikia su visais STL container'iais
-	unsigned a = std::count_if(Studentai.begin(), Studentai.end(), find_split_mark);
-	Studentai_KIETI.resize(a);
-	Studentai_LEVI.resize(Studentai.size() - a);
-
-	std::partition_copy(Studentai.begin(), Studentai.end(), Studentai_KIETI.begin(), Studentai_LEVI.begin(), find_split_mark);
-	//--------------------------------------
 
 
 
-	//---------generateFile()---------------
-	generateFile(Studentai_KIETI, Studentai_LEVI);
-	//--------------------------------------
+	 // sortina pagal galutinius pazymius
+	
+
+	if (strategija == 1) { //STRATEGY #1
+		Custom::sort(Studentai);
+
+		T Studentai_KIETI{};
+		T Studentai_LEVI{};
+
+		
+		//---------split_students()-------------
+		unsigned a = std::count_if(Studentai.begin(), Studentai.end(), cool_students_sort);
+		Studentai_KIETI.resize(a);
+		Studentai_LEVI.resize(Studentai.size() - a);
+
+		std::partition_copy(Studentai.begin(), Studentai.end(), Studentai_KIETI.begin(), Studentai_LEVI.begin(), cool_students_sort);
+		Studentai.clear();//v0.51
+		//---------generuoja failus-------------
+		generateFile(Studentai, Studentai_LEVI);
+	}
+	else if(strategija == 2){				   //STRATEGY #2
+		T Studentai_kieti;
+
+		//Studentai2 = std::move(Studentai);
+		//std::move(Studentai.begin(), Studentai.begin() + it, std::back_inserter(Studentai2));*/
+		//Studentai.erase(Studentai.begin(), Studentai.begin() + it);
+		//auto abc = std::distance(Studentai.begin(), std::find_if(Studentai.begin(), Studentai.end(), find_split_mark));	
+		//unsigned int abc = std::count_if(Studentai.begin(), Studentai.end(), find_split_mark);
+
+		T Studentai_new;
+		std::partition_copy(std::make_move_iterator(Studentai.begin()),
+			std::make_move_iterator(Studentai.end()),
+			std::back_inserter(Studentai_kieti), std::back_inserter(Studentai_new),
+			cool_students_sort
+		);
+		Studentai = std::move(Studentai_new);
+
+
+		//---------generuoja failus-------------
+		generateFile(Studentai_kieti, Studentai);
+	}
+	else {
+		//auto it = Studentai.end();
+		//auto pivot = std::partition(Studentai.begin(), Studentai.end(), cool_students_sort);
+
+		//T Studentai_kieti(std::distance(pivot, Studentai.end()));
+
+		//std::copy(pivot, Studentai.end(), Studentai_kieti.begin());
+
+		//std::advance(it, -1);
+		//std::advance(pivot, -1);
+		//while (it != pivot)
+		//{
+		//	Studentai.pop_back();
+		//	it--;
+		//}
+		//generateFile(Studentai_kieti, Studentai);
+	}
 }
 
 
 
 
 
-//void Failo_nuskaitymas(vector<Items>& Studentai, string file_name, vector<string>& vardai, vector<string>& pavardes) {
-template <typename T> void Failo_nuskaitymas(string file_name) {
+
+template <typename T> void Failo_skirstymas(int strategija, T& Studentai) {
+	if (strategija == 1) { //STRATEGY #1
+		//Custom::sort(Studentai);
+		T Studentai_kieti;
+		T Studentai_levi;
+
+		std::partition_copy(std::make_move_iterator(Studentai.begin()),
+			std::make_move_iterator(Studentai.end()),
+			std::back_inserter(Studentai_kieti), std::back_inserter(Studentai_levi),
+			cool_students_sort
+		);
+
+
+		//---------generuoja failus-------------
+		generateFile(Studentai_kieti, Studentai_levi);
+	}
+	else if (strategija == 2) {				   //STRATEGY #2
+		auto it = Studentai.end();
+		auto pivot = std::partition(Studentai.begin(), Studentai.end(), cool_students_sort);
+
+		T Studentai_levi(std::distance(pivot, Studentai.end()));
+
+		std::copy(pivot, Studentai.end(), Studentai_levi.begin()); 
+		it--;
+		pivot--;
+		while (it != pivot) // geriau nei std::move
+		{
+			it--;
+			Studentai.pop_back();
+		}
+		//---------generuoja failus-------------
+		generateFile(Studentai, Studentai_levi);
+	}
+}
+
+
+template <typename T> void Failo_generavimas_v2(string filename, unsigned const int n = 100) { //sugeneruoja faila tiktais
+	//Studentai.reserve(n);
+	T Studentai;
+
+	//Studentai2.reserve(100);
+
+	vector<int> temp_balai;
+
+	//std::mt19937 gen;
+	//gen.seed(std::random_device()());
+	//std::uniform_int_distribution<int> distr(1, 10);
+	int temp_egz;
+	for (int i = 0; i < n; ++i) {
+
+		random_num_generator(temp_balai, temp_egz);
+
+		Sukurti_studenta(Studentai, "Vardas" + std::to_string(i), "Pavarde" + std::to_string(i), temp_balai, temp_egz); //sukuriamas vienas studentas
+		temp_balai.clear();
+	}
+
+	writeToFile_egz(Studentai, filename);
+
+}
+
+
+
+template <typename T> void Failo_nuskaitymas(string file_name, string print = "print", string skirstymas = "neskirstyti", int strategija = 1) {
 	T Studentai;
 	string vardas{}, pavarde{};
 
@@ -183,23 +262,21 @@ template <typename T> void Failo_nuskaitymas(string file_name) {
 
 	std::ifstream failas(file_name.c_str());
 
-	//ignoruoja pirma eilute:
+	//ignoruoja pirma eilute: NOTES ISIMTA
 	//Pavarde	Vardas	ND1  ND2   ND3  ND4  ND5  Egzaminas
-	failas.ignore(1000, '\n'); 
+	//failas.ignore(1000, '\n'); 
 
 	if (failas.fail()) throw std::exception("Nera tokio failo."); //jei nera failo
 
 	int balas_temp;
-	while (!failas.eof()) {
+	while (!failas.eof()) { //addded v0.55
 
 		failas >> pavarde >> vardas; // skaitomi pavarde ir vardas
 		for (int j = 0; j < 5; j++) { // skaitomi 5 namu darbu balai
 			failas >> balas_temp;
 			balai.push_back(balas_temp);
 		}
-
 		if ((!(failas >> egz) || failas.fail() || balai.size() != 5)) throw std::exception("Blogas failo formatas."); // paieskoma ar formatas failo yra geras
-
 		Sukurti_studenta(Studentai, vardas, pavarde, balai, egz); //push back viena Studenta
 		balai.clear();
 		vardai.push_back(vardas); // for max_len
@@ -208,11 +285,15 @@ template <typename T> void Failo_nuskaitymas(string file_name) {
 	//sort(Studentai.begin(), Studentai.end(), alphabetical_sorting);
 	failas.close(); //nezinau ar butina
 
+	if (print == "print") {
+		Print_table(Studentai, max_len(vardai), max_len(pavardes));
+	}
 
-	// reikia max_len, kad formatuoti lentele butu lengviau
-	Print_table(Studentai, max_len(vardai), max_len(pavardes));
+	if (skirstymas == "skirstyti") {
+		Failo_skirstymas(strategija, Studentai);
+	}
+	
 }
-
 
 
 
@@ -251,12 +332,6 @@ template <typename T> void Duomenu_ivedimas() {
 
 	Print_table(Studentai, max_len(vardai), max_len(pavardes));
 }
-
-
-
-
-
-
 
 template <typename T> void Print_table(T& Studentai, int max_vardas, int max_pavarde) {
 	printf("%s\n", std::string((max_pavarde + max_vardas) + 14 + 14 + 12 + 8, '-').c_str());

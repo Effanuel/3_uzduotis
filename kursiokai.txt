@@ -1,6 +1,5 @@
-Pavarde				Vardas				ND1  ND2   ND3  ND4  ND5  Egzaminas
-abrdasa				asdasdasdasd		3	 2	   3	4	 5	  33			 
-baaccrdassssaaaaaaaaaaaaaaaaaa		aaa    7    10    8    5    4    6
-dcc					aaaab					3    10    8    5    2    6
-bbb					wwwbbbbbbbbbbbbbbbbbbbbbbbbbb				7    7     7    7    7    7
-cbca				vbbrdeaa			5    10    8    10   1    10 
+abrdasa00				avsadvsdasdav	1    2     4	4    5	  5		 
+baaccrdassssaaaaaaaa		aaa		3    10    8    5    4    3 
+dcc				aaaab		3    10    8    5    2    4
+bbb				wwwbb		7    7     7    7    7    7
+yssbca				asdasdasdasd	5    10    8    10   1    5
