@@ -45,9 +45,35 @@ make all;
 ./DuomenuApdorojimas;
 ```
 ---
-## [v0.5](https://github.com/Effanuel/Duomenu-apdorojimas/releases/tag/v0.5)
+## [v1.0](https://github.com/Effanuel/Duomenu-apdorojimas/releases/tag/v0.5)
 
 ### Strategija #1 *(std::partition_copy)*
+#### Failo generavimo greičių laikai su STL container'iais 
+*(Generavimo laikai apskaičiuoti pagal 20 matavimų vidurkį)*
+
+| Studentų skaičius:     | 10        | 100       | 1,000     | 10,000    | 100,000   | 1,000,000 |
+| :--------------------- | --------- | --------- | --------- | --------- | --------- | --------- |
+| **vector** laikas in s | 0.0028888 | 0.0032600 | 0.0191334 | 0.1021460 | 0.8694390 | 8.57822   |
+| **list** laikas in s   | 0.0022954 | 0.0029898 | 0.0193620 | 0.1022130 | 0.8663810 | 8.60992   |
+| **deque** laikas in s  | 0.0022213 | 0.0030219 | 0.0191258 | 0.1030060 | 0.8664620 | 8.71775   |
+
+
+
+### Strategija #2 *(std::copy + .pop_back())*
+#### Failo generavimo greičių laikai su STL container'iais 
+*(Generavimo laikai apskaičiuoti pagal 20 matavimų vidurkį)*
+
+| Studentų skaičius:     | 10        | 100       | 1,000     | 10,000    | 100,000   | 1,000,000 |
+| :--------------------- | --------- | --------- | --------- | --------- | --------- | --------- |
+| **vector** laikas in s | 0.0029979 | 0.0036705 | 0.0190777 | 0.0969618 | 0.8539030 | 8.71786   |
+| **list** laikas in s   | 0.0024956 | 0.0032619 | 0.0194873 | 0.0976417 | 0.8610510 | 8.71506   |
+| **deque** laikas in s  | 0.0024618 | 0.0031395 | 0.0985481 | 0.1030060 | 0.8611970 | 8.82010   |
+
+---
+
+## [v0.5](https://github.com/Effanuel/Duomenu-apdorojimas/releases/tag/v0.5)
+
+### (OUTDATED) Strategija #1 *(std::partition_copy) (no file reading included)* 
 #### Failo generavimo greičių laikai su STL container'iais 
 *(Generavimo laikai apskaičiuoti pagal 20 matavimų vidurkį)*
 
@@ -72,14 +98,14 @@ make all;
 
 ### Generuoti failo formatai yra tokie:
 ```
-KIETI
+OUTPUT_KIETI.txt
 Pavardė     Vardas      ND1  ND2   ND3  ND4  ND5  Galutinis_balas(Med.)
 Vardas2     Pavardė2    7    10    8    5    4    6
 Vardas1     Pavardė1    8    9     10   6    10   9
 ...
 ```
 ```
-SILPNI
+OUTPUT_SILPNI.txt
 Pavardė     Vardas      ND1  ND2   ND3  ND4  ND5  Galutinis_balas(Med.)
 Vardas2     Pavardė2    1    2    1    4    1     2
 Vardas1     Pavardė1    3    5     1    2    3    4
