@@ -41,6 +41,9 @@ Vardas2     Pavardė2      7.20            9.10
 ### Final(nuo v1.0):
 1. Galima pasirinkti sugeneruoti failus
 2. Galima pasirinkti STL testavimą
+
+![pasirinkimai](https://github.com/Effanuel/Duomenu-apdorojimas/blob/master/pasirinkimai.png)
+
 ---
 
 ## Paleidimas (Command-line)
