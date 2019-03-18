@@ -109,15 +109,15 @@ make all
 
 ### Generuoti failo formatai yra tokie:
 ```
-OUTPUT_KIETI.txt
-Pavardė     Vardas      ND1  ND2   ND3  ND4  ND5  Galutinis_balas(Med.)
+//OUTPUT_KIETI.txt
+//Pavardė     Vardas      ND1  ND2   ND3  ND4  ND5  Galutinis_balas(Med.)
 Vardas2     Pavardė2    7    10    8    5    4    6
 Vardas1     Pavardė1    8    9     10   6    10   9
 ...
 ```
 ```
-OUTPUT_SILPNI.txt
-Pavardė     Vardas      ND1  ND2   ND3  ND4  ND5  Galutinis_balas(Med.)
+//OUTPUT_SILPNI.txt
+//Pavardė     Vardas      ND1  ND2   ND3  ND4  ND5  Galutinis_balas(Med.)
 Vardas2     Pavardė2    1    2    1    4    1     2
 Vardas1     Pavardė1    3    5     1    2    3    4
 
