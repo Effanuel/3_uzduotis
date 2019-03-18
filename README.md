@@ -55,7 +55,7 @@ make all
 ./DuomenuApdorojimas
 ```
 ## CHANGE LOGS:
----
+
 ## [v1.0](https://github.com/Effanuel/Duomenu-apdorojimas/releases/tag/v1.0)
 
 ### Strategija #1 *(std::partition_copy)*
