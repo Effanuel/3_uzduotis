@@ -48,8 +48,8 @@ Vardas2     Pavardė2      7.20            9.10
 
 ## Paleidimas (Command-line)
 ```
-make all;
-./DuomenuApdorojimas;
+make all
+./DuomenuApdorojimas
 ```
 ---
 ## [v1.0](https://github.com/Effanuel/Duomenu-apdorojimas/releases/tag/v1.0)
