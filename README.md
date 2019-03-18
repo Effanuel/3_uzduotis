@@ -5,7 +5,7 @@
 2. **n** atliktų namų darbų rezultatus (10-balėje sistemoje), o taip pat egzamino rezultatą;
 3. Tuomet iš šių duomenų, suskaičiuoja galutinius balus<br/>pagal **vidurkį**:<br/> 
     ```galutinis_vid = 0.4 * vidurkis + 0.6 * egzaminas```<br/>ir **medianą**:<br/>
-    ```galutinis_med = 0.4 * vidurkis + 0.6 * egzaminas```
+    ```galutinis_med = 0.4 * mediana + 0.6 * egzaminas```
 4. Taip pat galima pasirinkti, jog namų darbų rezultatai bei egzamino balas būtų sugeneruojami
     atsitiktinai (penki balai kaip *default*);<br/>
 
