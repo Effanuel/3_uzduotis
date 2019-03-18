@@ -46,11 +46,15 @@ Vardas2     Pavardė2      7.20            9.10
 
 ---
 
-## Paleidimas (Command-line)
+## Installation
+1. Atsisiūskite naujausią versiją.
+2. Extract failus.
+3. Per command-line:
 ```
 make all
 ./DuomenuApdorojimas
 ```
+## CHANGE LOGS:
 ---
 ## [v1.0](https://github.com/Effanuel/Duomenu-apdorojimas/releases/tag/v1.0)
 
