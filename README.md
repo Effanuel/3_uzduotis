@@ -1,5 +1,12 @@
 # 2 oji uzduotis (Duomenų apdorojimas)
-## Programos veikimo principas
+## Programos veikimo principas:
+
+1. **(nuo v0.2)** **Nuskaito** failą su mokiniais ir namų darbų balai, ir išveda į konsolę (apskaičiuoja galutinį balą)
+2. **(nuo v0.1)** **Įvesti** mokinio informaciją per konsolę ir **išvesti** į lentelę (apskaičiuoja galutinį balą)
+3. **(nuo v0.4)** **Sugeneruoja** 2 failus iš 10,000 studentų, išskirstant į kietus ir lėvus (gal. balas >= 0.5)
+4. **(nuo v0.5)** Pateikti **greičius skaičiavimų** naudojant skirtingus STL container'ius (iš 100,000 studentų)
+---
+
 ### Įvedimas(nuo v0.1): 
 1. Nuskaito vieno studento duomenis: **vardą** ir **pavardę**;
 2. **n** atliktų namų darbų rezultatus (10-balėje sistemoje), o taip pat egzamino rezultatą;
@@ -54,6 +61,7 @@ Vardas2     Pavardė2      7.20            9.10
 make all
 ./DuomenuApdorojimas
 ```
+---
 ## CHANGE LOGS:
 
 ## [v1.0](https://github.com/Effanuel/Duomenu-apdorojimas/releases/tag/v1.0)
@@ -130,7 +138,6 @@ Vardas1     Pavardė1    3    5     1    2    3    4
 ## [v0.2](https://github.com/Effanuel/Duomenu-apdorojimas/releases/tag/v0.2)
 ### Failo formatas turi būti toks:
 ```
-Pavardė     Vardas      ND1  ND2   ND3  ND4  ND5  Egzaminas
 Vardas1     Pavardė1    8    9     10   6    10   9
 Vardas2     Pavardė2    7    10    8    5    4    6
 ...
