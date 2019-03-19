@@ -6,7 +6,15 @@
 3. **(nuo v0.4)** **Sugeneruoja** 2 failus iš 10,000 studentų, išskirstant į kietus ir lėvus (gal. balas >= 0.5)
 4. **(nuo v0.5)** Pateikti **greičius skaičiavimų** naudojant skirtingus STL container'ius (iš 100,000 studentų)
 ---
-
+## Installation
+1. [Atsisiūskite naujausią versiją.](https://github.com/Effanuel/Duomenu-apdorojimas/archive/v1.0.zip)
+2. Extract failus.
+3. Per command-line:
+```
+make all
+./DuomenuApdorojimas
+```
+---
 ### Įvedimas(nuo v0.1): 
 1. Nuskaito vieno studento duomenis: **vardą** ir **pavardę**;
 2. **n** atliktų namų darbų rezultatus (10-balėje sistemoje), o taip pat egzamino rezultatą;
@@ -51,16 +59,6 @@ Vardas2     Pavardė2      7.20            9.10
 
 ![pasirinkimai](https://github.com/Effanuel/Duomenu-apdorojimas/blob/master/pasirinkimai.png)
 
----
-
-## Installation
-1. Atsisiūskite naujausią versiją.
-2. Extract failus.
-3. Per command-line:
-```
-make all
-./DuomenuApdorojimas
-```
 ---
 ## CHANGE LOGS:
 
