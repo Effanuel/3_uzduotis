@@ -1,8 +1,8 @@
 # 2 oji uzduotis (Duomenų apdorojimas)
 ## Programos veikimo principas:
 
-1. **(nuo v0.2)** **Nuskaito** failą su mokiniais ir namų darbų balai, ir išveda į konsolę (apskaičiuoja galutinį balą)
-2. **(nuo v0.1)** **Įvesti** mokinio informaciją per konsolę ir **išvesti** į lentelę (apskaičiuoja galutinį balą)
+1. **(nuo v0.1)** **Įvesti** mokinio informaciją per konsolę ir **išvesti** į lentelę (apskaičiuoja galutinį balą)
+2. **(nuo v0.2)** **Nuskaito** failą su mokiniais ir namų darbų balai, ir išveda į konsolę (apskaičiuoja galutinį balą)
 3. **(nuo v0.4)** **Sugeneruoja** 2 failus iš 10,000 studentų, išskirstant į kietus ir lėvus (gal. balas >= 0.5)
 4. **(nuo v0.5)** Pateikti **greičius skaičiavimų** naudojant skirtingus STL container'ius (iš 100,000 studentų)
 ---
