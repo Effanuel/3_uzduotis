@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "Algoritmai.h"
 #include <iostream>
@@ -202,27 +202,35 @@ template <typename T> void Failo_skirstymas(int strategija, T& Studentai) {
 		//---------generuoja failus-------------
 		generateFile(Studentai_kieti, Studentai_levi);
 	}
-	else if (strategija == 2) {				   //STRATEGY #2
-		auto it = Studentai.end();
+	else if (strategija == 2) {	//STRATEGY #2
 		auto pivot = std::partition(Studentai.begin(), Studentai.end(), cool_students_sort);
-
+		//T Studentai_levi(pivot, Studentai.end());
 		T Studentai_levi(std::distance(pivot, Studentai.end()));
 
 		std::copy(pivot, Studentai.end(), Studentai_levi.begin()); 
-		it--;
-		pivot--;
-		while (it != pivot) // geriau nei std::move
-		{
-			it--;
-			Studentai.pop_back();
-		}
+		Studentai.erase(pivot, Studentai.end()); // SUPAPRASTINTA
+
 		//---------generuoja failus-------------
+		generateFile(Studentai, Studentai_levi);
+	}
+	else if (strategija == 3) { //STRATEGY #3
+		T Studentai_levi;
+		auto it = Studentai.begin();
+		while (it != Studentai.end()) {
+			if (!cool_students_sort(*it)) {
+				Studentai_levi.push_back(*it);
+				it = Studentai.erase(it); 
+			}
+			else
+				++it; 
+		}
+
 		generateFile(Studentai, Studentai_levi);
 	}
 }
 
 
-template <typename T> void Failo_generavimas_v2(string filename, unsigned const int n = 100) { //sugeneruoja faila tiktais
+template <typename T> void Failo_generavimas_v2(string filename, unsigned const int n = 1000) { //sugeneruoja faila tiktais
 	//Studentai.reserve(n);
 	T Studentai;
 
@@ -262,14 +270,10 @@ template <typename T> void Failo_nuskaitymas(string file_name, string print = "p
 
 	std::ifstream failas(file_name.c_str());
 
-	//ignoruoja pirma eilute: NOTES ISIMTA
-	//Pavarde	Vardas	ND1  ND2   ND3  ND4  ND5  Egzaminas
-	//failas.ignore(1000, '\n'); 
-
 	if (failas.fail()) throw std::exception("Nera tokio failo."); //jei nera failo
 
 	int balas_temp;
-	while (!failas.eof()) { //addded v0.55
+	while (!failas.eof()) { 
 
 		failas >> pavarde >> vardas; // skaitomi pavarde ir vardas
 		for (int j = 0; j < 5; j++) { // skaitomi 5 namu darbu balai
@@ -282,7 +286,6 @@ template <typename T> void Failo_nuskaitymas(string file_name, string print = "p
 		vardai.push_back(vardas); // for max_len
 		pavardes.push_back(pavarde); // for max_len
 	}
-	//sort(Studentai.begin(), Studentai.end(), alphabetical_sorting);
 	failas.close(); //nezinau ar butina
 
 	if (print == "print") {

@@ -4,19 +4,20 @@
 
 int main()
 {
-	cout << "Ivedus mokinio varda, pavarde, 'n' namu darbu balus\nir egzamino bala, bus isvedama lentele.\n" << std::string(40, '=') << endl;
+	//cout << "Ivedus mokinio varda, pavarde, 'n' namu darbu balus\nir egzamino bala, bus isvedama lentele.\n" << std::string(40, '=') << endl;
+	cout << std::string(40, '=') << endl;
 
 	int choice;
-	cout << "1 - Skaityti data is failo;\n2 - Ivesti data rankomis;\n3 - Sugeneruos failus is 10,000 studentu;\n4 - STL container'iu greiciu testavimas\n" << std::string(40, '=') << endl;
+	cout << "1 - Ivesti data rankomis;\n2 - Skaityti data is failo;\n3 - Sugeneruos failus is 10,000 studentu;\n4 - STL container'iu greiciu testavimas\n" << std::string(40, '=') << endl;
 	choice = cin_and_checkFormat_in_interval(1, 4);
-	constexpr int strategija = 2;
+	constexpr int strategija = 3;
 	try {
 		switch (choice) {
 		case 1:
-			Failo_nuskaitymas<vector<Items>>("kursiokai.txt");
+			Duomenu_ivedimas<vector<Items>>();
 			break;
 		case 2:
-			Duomenu_ivedimas<vector<Items>>();
+			Failo_nuskaitymas<vector<Items>>("kursiokai.txt");
 			break;
 		case 3: 
 			Failo_generavimas_v2<vector<Items>>("OUTPUT.txt", 1e4); // generate file
@@ -24,21 +25,48 @@ int main()
 			cout << "Done." << endl;
 			break;
 		case 4: {
-			Failo_generavimas_v2<vector<Items>>("OUTPUT.txt", 1e5); 
+			Failo_generavimas_v2<vector<Items>>("OUTPUT.txt", 100000); 
 			Timer laikas;
 
-			laikas.reset(); //start
-			Failo_nuskaitymas<vector<Items>>("OUTPUT.txt", "neprint", "skirstyti", strategija);
-			cout << "Strategija:(" << strategija << "):Suskirstymas <vector>\t(n = 100,000): " << laikas.elapsed() << " s" << endl; //end
+			//vector<long double> laikai1;
+			//vector<long double> laikai2;
+			//vector<long double> laikai3;
+			//for (int i = 0; i < 1; ++i) {
+			//	laikas.reset();
+			//	Failo_nuskaitymas<vector<Items>>("OUTPUT.txt", "neprint", "skirstyti", strategija);
+			//	laikai1.push_back(laikas.elapsed());
+			//
+			//	laikas.reset();
+			//	Failo_nuskaitymas<list<Items>>("OUTPUT.txt", "neprint", "skirstyti", strategija);
+			//	laikai2.push_back(laikas.elapsed());
+			//
+			//	laikas.reset();
+			//	Failo_nuskaitymas<deque<Items>>("OUTPUT.txt", "neprint", "skirstyti", strategija);
+			//	laikai3.push_back(laikas.elapsed());
+			//}
+			//
+			//cout << std::accumulate(laikai1.begin(), laikai1.end(), 0.0) / 1 << endl;
+			//cout << std::accumulate(laikai2.begin(), laikai2.end(), 0.0) / 1 << endl;
+			//cout << std::accumulate(laikai3.begin(), laikai3.end(), 0.0) / 1 << endl;
+
+
+
+
+
+
+
+
+			Failo_nuskaitymas<vector<Items>>("output.txt", "neprint", "skirstyti", strategija);
+			cout << "strategija:(" << strategija << "):suskirstymas <vector>\t(n = 100,000): " << laikas.elapsed() << " s" << endl; //end
 
 		
 			laikas.reset();//start
-			Failo_nuskaitymas<list<Items>>("OUTPUT.txt", "neprint", "skirstyti", strategija);
-			cout << "Strategija:(" << strategija << "):Suskirstymas <list>\t(n = 100,000): " << laikas.elapsed() << " s" << endl; //end
+			Failo_nuskaitymas<list<Items>>("output.txt", "neprint", "skirstyti", strategija);
+			cout << "strategija:(" << strategija << "):suskirstymas <list>\t(n = 100,000): " << laikas.elapsed() << " s" << endl; //end
 
 			laikas.reset();//start
-			Failo_nuskaitymas<deque<Items>>("OUTPUT.txt", "neprint", "skirstyti", strategija);
-			cout << "Strategija:(" << strategija << "):Suskirstymas <deque>\t(n = 100,000): " << laikas.elapsed() << " s" << endl; //end
+			Failo_nuskaitymas<deque<Items>>("output.txt", "neprint", "skirstyti", strategija);
+			cout << "strategija:(" << strategija << "):suskirstymas <deque>\t(n = 100,000): " << laikas.elapsed() << " s" << endl; //end
 			break;
 		}
 		default:
@@ -56,7 +84,7 @@ int main()
 //vector<long double> laikai1;
 //vector<long double> laikai2;
 //vector<long double> laikai3;
-//for (int i = 0; i < 10; ++i) {
+//for (int i = 0; i < 20; ++i) {
 //	laikas.reset();
 //	Failo_nuskaitymas<vector<Items>>("OUTPUT.txt", "neprint", "skirstyti", strategija);
 //	laikai1.emplace_back(laikas.elapsed());
@@ -70,6 +98,6 @@ int main()
 //	laikai3.emplace_back(laikas.elapsed());
 //}
 //
-//cout << "Praejo (n = 10,000): " << std::accumulate(laikai1.begin(), laikai1.end(), 0.0) / 10 << endl;
-//cout << "Praejo (n = 10,000): " << std::accumulate(laikai2.begin(), laikai2.end(), 0.0) / 10 << endl;
-//cout << "Praejo (n = 10,000): " << std::accumulate(laikai3.begin(), laikai3.end(), 0.0) / 10 << endl;
+//cout << std::accumulate(laikai1.begin(), laikai1.end(), 0.0) / 20 << endl;
+//cout << std::accumulate(laikai2.begin(), laikai2.end(), 0.0) / 20 << endl;
+//cout << std::accumulate(laikai3.begin(), laikai3.end(), 0.0) / 20 << endl;
