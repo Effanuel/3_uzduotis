@@ -1,7 +1,7 @@
 CXX = g++
 CC = g
 
-all:	DuomenuApdorojimas Mano_func
+all:	DuomenuApdorojimas Mano_func Algoritmai
 
 test:	all
 	./DuomenuApdorojimas
