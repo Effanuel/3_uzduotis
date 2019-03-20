@@ -12,7 +12,7 @@
 3. Per command-line:
 ```
 make all
-./DuomenuApdorojimas
+./project
 ```
 ---
 ### Įvedimas(nuo v0.1): 
