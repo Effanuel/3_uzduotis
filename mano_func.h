@@ -4,6 +4,7 @@
 #include <iostream>
 #include <algorithm> //sort
 #include <numeric> //accumulate
+#include <exception> 
 
 #include <vector>
 #include <list>
@@ -270,7 +271,7 @@ template <typename T> void Failo_nuskaitymas(string file_name, string print = "p
 
 	std::ifstream failas(file_name.c_str());
 
-	if (failas.fail()) throw std::exception("Nera tokio failo."); //jei nera failo
+	if (failas.fail()) throw std::runtime_error("Nera tokio failo."); //jei nera failo
 
 	int balas_temp;
 	while (!failas.eof()) { 
@@ -280,7 +281,7 @@ template <typename T> void Failo_nuskaitymas(string file_name, string print = "p
 			failas >> balas_temp;
 			balai.push_back(balas_temp);
 		}
-		if ((!(failas >> egz) || failas.fail() || balai.size() != 5)) throw std::exception("Blogas failo formatas."); // paieskoma ar formatas failo yra geras
+		if ((!(failas >> egz) || failas.fail() || balai.size() != 5)) throw std::runtime_error("Blogas failo formatas."); // paieskoma ar formatas failo yra geras
 		Sukurti_studenta(Studentai, vardas, pavarde, balai, egz); //push back viena Studenta
 		balai.clear();
 		vardai.push_back(vardas); // for max_len

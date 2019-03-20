@@ -45,7 +45,7 @@ int main()
 			break;
 		}
 	}
-	catch (const std::exception& e) {
+	catch (const std::runtime_error& e) {
 		cout << e.what() << endl;
 		exit(0);
 	}
