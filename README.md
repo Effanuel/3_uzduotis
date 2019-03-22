@@ -112,7 +112,7 @@ Vardas2     Pavardė2      7.20            9.10
 | **deque** laikas in s  | 0.0075034 | 0.0095593 | 0.0158286 | 0.0708954 | 0.5846350 | 5.89265   |
 ---
 
-## [v0.45](https://github.com/Effanuel/Duomenu-apdorojimas/releases/tag/v0.4)
+## [v0.45](https://github.com/Effanuel/Duomenu-apdorojimas/releases/tag/v0.45)
 ### raskMinkstus_v1
 
 | Studentų skaičius:     | 10,000    | 100,000   |
