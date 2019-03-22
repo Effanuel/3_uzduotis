@@ -34,7 +34,7 @@ Juozas     Rimantas      8.60            9.20
 ### Nuskaitymas(nuo v0.2):
 1. Nuskaito failą pagal tokį formatą:
 ```
-Pavardė     Vardas      ND1  ND2   ND3  ND4  ND5  Galutinis_balas(Med.)
+//Pavardė     Vardas      ND1  ND2   ND3  ND4  ND5  Galutinis_balas(Med.)
 Vardas2     Pavardė2    7    10    8    5    4    6
 Vardas1     Pavardė1    8    9     10   6    10   9
 ...
@@ -141,16 +141,9 @@ Vardas1     Pavardė1    3    5     1    2    3    4
 ...
 ```
 ---
-
 ## [v0.3](https://github.com/Effanuel/Duomenu-apdorojimas/releases/tag/v0.3)
 ---
 ## [v0.2](https://github.com/Effanuel/Duomenu-apdorojimas/releases/tag/v0.2)
-### Failo formatas turi būti toks:
-```
-Vardas1     Pavardė1    8    9     10   6    10   9
-Vardas2     Pavardė2    7    10    8    5    4    6
-...
-```
 ---
 ## [v0.11](https://github.com/Effanuel/Duomenu-apdorojimas/releases/tag/v0.11)
 
