@@ -1,74 +1,116 @@
-#include "mano_func.h"
-#include "Algoritmai.h"
+#include <iostream>
+#include <string>
+
+#include <algorithm> //sort
+#include <fstream>
+#include <sstream>
+#include <iterator>
+
+
+#include "mano_func.h" //cin_and_checkFormat(); ar_atsitiktinis();  median(); compareByFirstLetter(); find_longer_word()
+
+
+
+
 
 
 int main()
 {
-	//cout << "Ivedus mokinio varda, pavarde, 'n' namu darbu balus\nir egzamino bala, bus isvedama lentele.\n" << std::string(40, '=') << endl;
-	cout << std::string(40, '=') << endl;
+	cout << "Ivedus mokinio varda, pavarde, 'n' namu darbu balus\nir egzamino bala, bus isvedama lentele.\n" << std::string(38, '=') << endl;
+	
+	int max_vardas{}, max_pavarde{};  //reikia, kad formatavimas butu lengvesnis
+	vector<string> vardai{}, pavardes{}; //
 
-	int choice;
-	cout << "1 - Ivesti data rankomis;\n2 - Skaityti data is failo;\n3 - Sugeneruos failus is 10,000 studentu;\n4 - STL container'iu greiciu testavimas\n" << std::string(40, '=') << endl;
-	choice = cin_and_checkFormat_in_interval(1, 4);
-	constexpr int strategija = 1;
-	try {
-		switch (choice) {
-		case 1:
-			Duomenu_ivedimas<vector<Items>>();
-			break;
-		case 2:
-			Failo_nuskaitymas<vector<Items>>("kursiokai.txt");
-			break;
-		case 3: 
-			Failo_generavimas_v2<vector<Items>>("OUTPUT.txt", 1e4); // generate file
-			Failo_nuskaitymas<vector<Items>>("OUTPUT.txt", "neprint", "skirstyti"); //split file
-			cout << "Done." << endl;
-			break;
-		case 4: {
-			Failo_generavimas_v2<vector<Items>>("OUTPUT.txt", 1e5); 
-			Timer laikas;
+	vector<Items> Studentai1;
+	vector<Items> Studentai2;
+	vector<int> balai{};
+	balai.reserve(2);
+	
 
-			Failo_nuskaitymas<vector<Items>>("output.txt", "neprint", "skirstyti", strategija);
-			cout << "strategija:(" << strategija << "):suskirstymas <vector>\t(n = 100,000): " << laikas.elapsed() << " s" << endl; //end
 
-			laikas.reset();//start
-			Failo_nuskaitymas<list<Items>>("output.txt", "neprint", "skirstyti", strategija);
-			cout << "strategija:(" << strategija << "):suskirstymas <list>\t(n = 100,000): " << laikas.elapsed() << " s" << endl; //end
 
-			laikas.reset();//start
-			Failo_nuskaitymas<deque<Items>>("output.txt", "neprint", "skirstyti", strategija);
-			cout << "strategija:(" << strategija << "):suskirstymas <deque>\t(n = 100,000): " << laikas.elapsed() << " s" << endl; //end
-			break;
-		}
-		default:
-			cout << "Nepavyko pasirinkti" << endl;
-			break;
-		}
+	char choice{};
+	cout << "1 - Skaityti data is failo;\n2 - Ivesti data rankomis;\n3 - Sugeneruos faila is 'n' studentu;\n4 - Testavimas vector vs deque (papildoma)\n" << std::string(38, '=') << endl;
+	cin >> choice;
+	switch (choice) {
+	case '1':
+		Failo_nuskaitymas(Studentai1, "kursiokai.txt", vardai, pavardes);
+
+
+		max_vardas = max_len(vardai); //reikia, kad formatavimas butu lengvesnis
+		max_pavarde = max_len(pavardes);
+		Print_table(Studentai1, max_vardas, max_pavarde);
+		break;
+	case '2':
+		Duomenu_ivedimas(Studentai1, balai, vardai, pavardes);
+
+
+		max_vardas = max_len(vardai); //reikia, kad formatavimas butu lengvesnis
+		max_pavarde = max_len(pavardes);
+		Print_table(Studentai1, max_vardas, max_pavarde);
+		break;
+	case '3': {
+		Timer laikas;
+		Studentai1 = generateStudents<vector<Items>>(10);
+		Studentai2 = split_students(Studentai1);
+		generateFile(Studentai1, Studentai2);
+		cout << "Praejo (n = 10): " << laikas.elapsed() << endl;
+
+		laikas.reset();
+		Studentai1 = generateStudents<vector<Items>>(100);
+		Studentai2 = split_students(Studentai1);
+		generateFile(Studentai1, Studentai2);
+		cout << "Praejo (n = 100): " << laikas.elapsed() << endl;
+
+		laikas.reset();
+		Studentai1 = generateStudents<vector<Items>>(1000);
+		Studentai2 = split_students(Studentai1);
+		generateFile(Studentai1, Studentai2);
+		cout << "Praejo (n = 1000): " << laikas.elapsed() << endl;
+
+		laikas.reset();
+		Studentai1 = generateStudents<vector<Items>>(10000);
+		Studentai2 = split_students(Studentai1);
+		generateFile(Studentai1, Studentai2);
+		cout << "Praejo (n = 10000): " << laikas.elapsed() << endl;
+
+		laikas.reset();
+		Studentai1 = generateStudents<vector<Items>>(100000);
+		Studentai2 = split_students(Studentai1);
+		generateFile(Studentai1, Studentai2);
+		cout << "Praejo (n = 100000): " << laikas.elapsed() << endl;
+
+		laikas.reset();
+		Studentai1 = generateStudents<vector<Items>>(1000000);
+		Studentai2 = split_students(Studentai1);
+		generateFile(Studentai1, Studentai2);
+		cout << "Praejo (n = 1000000): " << laikas.elapsed() << endl;
+		break;
 	}
-	catch (const std::runtime_error& e) {
-		cout << e.what() << endl;
-		exit(0);
+	case '4': {
+		
+		auto Studentai = generateStudents<vector<Items>>(10000);
+		Timer laikas;
+
+		auto Studentai_kieti = raskMinkstus_v2<vector<Items>>(Studentai);
+		generateFile(Studentai, Studentai_kieti);
+		cout << "Vector (n = 10,000): " << laikas.elapsed() << endl;
+
+		auto Studentai22 = generateStudents<deque<Items>>(10000);
+		laikas.reset();
+
+		auto Studentai_kieti2 = raskMinkstus_v2<deque<Items>>(Studentai22);
+		generateFile(Studentai22, Studentai_kieti2);
+		cout << "Deque (n = 10,000): " << laikas.elapsed() << endl;
+		break;
+	}		
 	}
+
+
+
+	
+	
+	
+
+
 }
-
-//-----TESTING TOOL------
-//vector<long double> laikai1;
-//vector<long double> laikai2;
-//vector<long double> laikai3;
-//for (int i = 0; i < 20; ++i) {
-//	laikas.reset();
-//	Failo_nuskaitymas<vector<Items>>("OUTPUT.txt", "neprint", "skirstyti", strategija);
-//	laikai1.push_back(laikas.elapsed());
-//
-//	laikas.reset();
-//	Failo_nuskaitymas<list<Items>>("OUTPUT.txt", "neprint", "skirstyti", strategija);
-//	laikai2.push_back(laikas.elapsed());
-//
-//	laikas.reset();
-//	Failo_nuskaitymas<deque<Items>>("OUTPUT.txt", "neprint", "skirstyti", strategija);
-//	laikai3.push_back(laikas.elapsed());
-//}
-//
-//cout << std::accumulate(laikai1.begin(), laikai1.end(), 0.0) / 20 << endl;
-//cout << std::accumulate(laikai2.begin(), laikai2.end(), 0.0) / 20 << endl;
-//cout << std::accumulate(laikai3.begin(), laikai3.end(), 0.0) / 20 << endl;
