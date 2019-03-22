@@ -1,7 +1,7 @@
 # 2-osios užduoties papildoma (Duomenų apdorojimas)
 ---
 ## CHANGE LOGS:
-## [v0.45](https://github.com/Effanuel/Duomenu-apdorojimas/releases/tag/v0.4)
+## [v0.45](https://github.com/Effanuel/Duomenu-apdorojimas/releases/tag/v0.45)
 ### raskMinkstus_v1
 
 | Studentų skaičius:     | 10,000    | 100,000   |
