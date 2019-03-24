@@ -60,7 +60,7 @@ Vardas2     Pavardė2      7.20            9.10
 ![pasirinkimai](https://github.com/Effanuel/Duomenu-apdorojimas/blob/master/pasirinkimai.png)
 
 ---
-## CHANGE LOGS:
+## Releases:
 
 ## [v1.0](https://github.com/Effanuel/Duomenu-apdorojimas/releases/tag/v1.0)
 
