@@ -11,6 +11,7 @@
 2. Extract failus.
 3. Per command-line:
 ```
+cd Duomenu-apdorojimas-1.0
 make all
 ./project
 ```
