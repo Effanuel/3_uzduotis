@@ -6,6 +6,9 @@
 3. **(nuo v0.4)** **Sugeneruoja** 2 failus iš 10,000 studentų, išskirstant į kietus ir lėvus (gal. balas >= 0.5)
 4. **(nuo v0.5)** Pateikti **greičius skaičiavimų** naudojant skirtingus STL container'ius (iš 100,000 studentų)
 ---
+## Prerequisites
+1. GNU C++ Compiler
+
 ## Installation
 1. [Atsisiūskite naujausią versiją.](https://github.com/Effanuel/Duomenu-apdorojimas/archive/v1.0.zip)
 2. Extract failus.
