@@ -1,6 +1,10 @@
 #pragma once
 
+
 #include <algorithm> //sort
+
+#include <iostream>
+
 #include <numeric>
 #include <vector>
 #include <list>

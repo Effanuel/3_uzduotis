@@ -18,11 +18,29 @@ void random_num_generator(vector<int>& balai, int& egz) {
 int cin_and_checkFormat_in_interval(int a, int b) {
 	unsigned int input;
 	while (!(cin >> input) || a > input || input > b) {
-		std::cout << "Netinkamas balo formatas. Iveskite is naujo: " << endl;
+		std::cout << "Netinkamas ivesties formatas. Iveskite is naujo: " << endl;
 		cin.clear();
 		cin.ignore(1000, '\n');
 	}
 	return input;
+}
+
+
+string cin_and_checkFormat() { //v1.07
+	string name;
+	do {
+		cin >> name;
+		for (auto &r : name) {
+			if (toupper(r) < 'A' || toupper(r) > 'Z') {
+				std::cout << "Netinkamas vardo formatas formatas. Iveskite is naujo: " << endl;
+				cin.clear();
+				name.clear(); //erases 'name' contents
+				cin.ignore(1000, '\n');
+				break;
+			}
+		}
+	} while (name == "");
+	return name;
 }
 
 void Rankinis_ivedimas(vector<int>& balai, int& egz) {

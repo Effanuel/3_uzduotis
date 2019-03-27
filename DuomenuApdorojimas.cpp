@@ -2,6 +2,7 @@
 #include "Algoritmai.h"
 
 
+
 int main()
 {
 	//cout << "Ivedus mokinio varda, pavarde, 'n' namu darbu balus\nir egzamino bala, bus isvedama lentele.\n" << std::string(40, '=') << endl;

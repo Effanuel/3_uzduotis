@@ -31,6 +31,9 @@ using std::deque;
 using std::string;
 
 
+
+
+
 class Timer {
 private:
 	using hrClock = std::chrono::high_resolution_clock;
@@ -47,7 +50,7 @@ public:
 };
 
 
-
+string cin_and_checkFormat();
 int cin_and_checkFormat_in_interval(int, int);
 void random_num_generator(vector<int>&, int&);
 void Rankinis_ivedimas(vector<int>&, int&);
@@ -313,7 +316,9 @@ template <typename T> void Duomenu_ivedimas() {
 	string vardas{};
 	string pavarde{};
 	cout << "Iveskite mokinio varda ir pavarde: " << endl;
-	cin >> vardas >> pavarde;
+	vardas = cin_and_checkFormat();
+	pavarde = cin_and_checkFormat();
+
 	
 
 	char is_random;
