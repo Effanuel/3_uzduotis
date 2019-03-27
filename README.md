@@ -10,7 +10,7 @@
 1. GNU C++ Compiler
 
 ## Installation
-1. [Atsisiūskite naujausią versiją.](https://github.com/Effanuel/Duomenu-apdorojimas/archive/v1.0.zip)
+1. [Atsisiūskite naujausią versiją.](https://github.com/Effanuel/Duomenu-apdorojimas/archive/v1.10.zip)
 2. Extract failus.
 3. Per command-line:
 ```
