@@ -13,24 +13,24 @@ double median(vector<double> arr) {
 }
 
 
-double vidurkis(std::vector<double> arr) {
+double vidurkis(vector<double> arr) {
 
 	return std::accumulate(arr.begin(), arr.end(), 0.0) / arr.size();
 }
 
 
-double Items::galBalas(double(*)(vector<double>)) const {
+double Student::galBalas(double(*kriterijus)(vector<double>)) const {
 	if (balai_.empty()) throw std::domain_error("negalima skaiciuoti tusciam vektoriui");
-	return 0.6 * median(balai_) + 0.4 * egz_;
+	return 0.6 * kriterijus(balai_) + 0.4 * egz_;
 }
 
-void Items::randomStudent() {
+void Student::randomStudent() {
 	static std::mt19937 gen;
 	gen.seed(std::random_device()());
 	static std::uniform_real_distribution<double> distr(1, 10);
 
-	vardas_ = "Vardas" + std::to_string(distr(gen));
-	pavarde_ = "Pavarde" + std::to_string(distr(gen));
+	vardas_ = "Vardas" + std::to_string(int(distr(gen)*10001)); //pseudo unique numbers
+	pavarde_ = "Pavarde" + std::to_string(int(distr(gen)*9999));
 	balai_.resize(5); //5 namu darbai
 	generate(balai_.begin(), balai_.end(), []() {
 		return distr(gen);
@@ -39,7 +39,7 @@ void Items::randomStudent() {
 }
 
 
-void Items::writeToFile(string filename, std::ofstream& failas) {
+void Student::writeToFile(string filename, std::ofstream& failas) {
 	failas << '\n' << vardas() << '\t' << pavarde() << '\t';
 	for (auto& balas : balai()) {
 		failas << std::setprecision(3) << balas << '\t';
@@ -49,26 +49,20 @@ void Items::writeToFile(string filename, std::ofstream& failas) {
 
 
 //namespace Custom {
-//	void sort(vector<Items>& Studentai) {
+//	void sort(vector<Student>& Studentai) {
 //		std::sort(Studentai.begin(), Studentai.end(), final_mark_sorting);
 //	}
-//	//void sort(list<Items>& Studentai) {
+//	//void sort(list<Student>& Studentai) {
 //	//	Studentai.sort(final_mark_sorting);
 //	//}
-//	//void sort(deque<Items>& Studentai) {
+//	//void sort(deque<Student>& Studentai) {
 //	//	sort(Studentai.begin(), Studentai.end(), final_mark_sorting);
 //	//}
 //}
 
 
 
-
-
-bool cool_students_sort(const Items& n) {
-	return n.galBalas() >= 5.0;
-}
-
-bool final_mark_sorting(const Items &a, const Items &b) //sortina pagal medianos galutini bala
+bool final_mark_sorting(const Student &a, const Student &b) //sortina pagal medianos galutini bala
 {
 	return a.galBalas() < b.galBalas();
 }
@@ -80,21 +74,10 @@ int max_len(vector<string> data) { //suranda ilgiausia varda/pavarde
 }
 
 
-bool alphabetical_sorting(const Items &a, const Items &b) //sortina pagal abecele
+bool alphabetical_sorting(const Student &a, const Student &b) //sortina pagal abecele
 {
 	return a.pavarde() < b.pavarde();
 }
 
 
 
-//namespace Custom {
-//	void sort(vector<Items>& Studentai) {
-//		sort(Studentai.begin(), Studentai.end(), final_mark_sorting);
-//	}
-//	void sort(list<Items>& Studentai) {
-//		Studentai.sort(final_mark_sorting);
-//	}
-//	void sort(deque<Items>& Studentai) {
-//		sort(Studentai.begin(), Studentai.end(), final_mark_sorting);
-//	}
-//}

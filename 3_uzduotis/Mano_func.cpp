@@ -34,19 +34,8 @@ string cin_and_checkFormat() { //v1.07
 	return name;
 }
 
-void Rankinis_ivedimas(vector<double>& balai, double& egz) {
-
-	cout << "Iveskite namu darbu rezultatus(0 arba raide sustabdys ivedinejima): " << endl;
-	double ndbalai;
-	while (cin >> ndbalai && ndbalai != 0 && ndbalai < 10 && ndbalai > 0) { //int(ndbalai)
-		balai.push_back(ndbalai);
-	}
-	if (balai.empty()) { //error handling
-		balai.resize(1);
-	}
-	cin.clear();
-	cin.ignore(1000, '\n');
-	cout << "Egzamino rezultatas: " << endl;
-	egz = cin_and_checkFormat_in_interval<double>(1, 10);
-
+bool cool_students_sort(const Student &n) {
+	return n.galBalas() >= 5.0;
 }
+
+
