@@ -1,0 +1,11 @@
+
+Vardas0	Pavarde0	4.97	1.05	1.63	3.08	2.76	1.3
+Vardas1	Pavarde1	9.43	8.63	3.33	6.04	7.77	5.86
+Vardas2	Pavarde2	4.84	4.99	4.02	1.46	5.72	5.66
+Vardas3	Pavarde3	3.05	7.81	3	8.41	6.08	2.95
+Vardas4	Pavarde4	6.86	8.55	2.96	6.08	5.54	3.3
+Vardas5	Pavarde5	5.73	6.88	8.01	6.42	6.26	4.67
+Vardas6	Pavarde6	3.66	1.86	6.24	9.18	5.82	2.43
+Vardas7	Pavarde7	9.13	3.5	3.42	6.32	6.43	4.19
+Vardas8	Pavarde8	6.24	7.99	4.94	1.79	1.42	7.78
+Vardas9	Pavarde9	4.07	5.72	5.26	9.44	2.79	1.74
