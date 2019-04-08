@@ -62,6 +62,8 @@ void Items::writeToFile(string filename, std::ofstream& failas) {
 
 
 
+
+
 bool cool_students_sort(const Items& n) {
 	return n.galBalas() >= 5.0;
 }
