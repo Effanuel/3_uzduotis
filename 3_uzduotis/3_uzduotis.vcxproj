@@ -152,6 +152,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="mano_func.h" />
+    <ClInclude Include="median.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Studentas.h" />
   </ItemGroup>

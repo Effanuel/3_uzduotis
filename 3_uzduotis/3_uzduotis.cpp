@@ -13,27 +13,30 @@ int main()
 
 	int choice;
 	cout << "1 - Ivesti data rankomis;\n2 - Skaityti data is failo;\n3 - Sugeneruos failus is 10,000 studentu;\n4 - STL container'iu greiciu testavimas\n" << std::string(40, '=') << endl;
-	choice = cin_and_checkFormat_in_interval(1, 4);
+	choice = cin_and_checkFormat_in_interval<int>(1, 4);
 	constexpr int strategija = 1;
 	try {
 		switch (choice) {
 		case 1: {
-			vector<Items> Studentai;
-			vector<double> balai{ 1, 2, 3, 4, 5 };
-			Sukurti_studenta(Studentai, "ok", "123", balai, 6.2);
-			for (const auto& stud: Studentai) {
-				cout << stud.vardas() << stud.pavarde() << endl;
-			}
-			//Duomenu_ivedimas<vector<Items>>();
+			//vector<Items> Studentai;
+			//vector<double> balai{ 1, 2, 3, 4, 5 };
+			//Studentai.emplace_back("ok", "123", balai, 6.2);
+			//Studentai.emplace_back("ok", "123", balai, 6.2);
+			//Sukurti_studenta(Studentai, "ok", "123", balai, 6.2);
+
+			//for (const auto& stud : Studentai) {
+			//	cout << stud.vardas() << stud.pavarde() << endl;
+			//}
+			Duomenu_ivedimas<vector<Items>>();
 			break;
 		}
 		case 2:
-			//Failo_nuskaitymas<vector<Items>>("kursiokai.txt");
+			Failo_nuskaitymas<vector<Items>>("kursiokai.txt");
 			break;
 		case 3:
-			//Failo_generavimas_v2<vector<Items>>("OUTPUT.txt", 1e4); // generate file
-			//Failo_nuskaitymas<vector<Items>>("OUTPUT.txt", "neprint", "skirstyti"); //split file
-			//cout << "Done." << endl;
+			Failo_generavimas_v2<vector<Items>>("OUTPUT.txt", 10); // generate file
+			Failo_nuskaitymas<vector<Items>>("OUTPUT.txt", "print", "skirstyti"); //split file
+			cout << "Done." << endl;
 			break;
 		case 4: {
 			//Failo_generavimas_v2<vector<Items>>("OUTPUT.txt", 1e5);

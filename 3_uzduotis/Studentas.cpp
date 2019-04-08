@@ -1,5 +1,9 @@
 ﻿#include "Studentas.h"
 
+//PATCH
+//egz final med vid updated to double
+//sukurti studenta uses emplace back instead of pushback
+
 double median(vector<double> arr) {
 	typedef vector<double>::size_type vecSize;
 	vecSize size = arr.size();
@@ -7,8 +11,6 @@ double median(vector<double> arr) {
 	return size % 2 != 0 ? arr[size / 2] : (arr[size / 2 - 1] + arr[size / 2]) / 2;
 
 }
-//PATCH
-//egz final med vid updated to double
 
 
 double vidurkis(std::vector<double> arr) {
@@ -17,34 +19,48 @@ double vidurkis(std::vector<double> arr) {
 }
 
 
-double Items::galBalas(double(*)(vector<double>) = median) const {
+double Items::galBalas(double(*)(vector<double>)) const {
 	if (balai_.empty()) throw std::domain_error("negalima skaiciuoti tusciam vektoriui");
 	return 0.6 * median(balai_) + 0.4 * egz_;
 }
 
+void Items::randomStudent() {
+	static std::mt19937 gen;
+	gen.seed(std::random_device()());
+	static std::uniform_real_distribution<double> distr(1, 10);
 
-
-template <typename T> void Sukurti_studenta(T& Studentai, string vardas, string pavarde, vector<double> balai, double egz) { //&
-	Studentai.emplace_back(vardas, pavarde, balai, egz);
+	vardas_ = "Vardas" + std::to_string(distr(gen));
+	pavarde_ = "Pavarde" + std::to_string(distr(gen));
+	balai_.resize(5); //5 namu darbai
+	generate(balai_.begin(), balai_.end(), []() {
+		return distr(gen);
+	});
+	egz_ = distr(gen);
 }
 
 
-
-
-
-
-
-namespace Custom {
-	void sort(vector<Items>& Studentai) {
-		std::sort(Studentai.begin(), Studentai.end(), final_mark_sorting);
+void Items::writeToFile(string filename, std::ofstream& failas) {
+	failas << '\n' << vardas() << '\t' << pavarde() << '\t';
+	for (auto& balas : balai()) {
+		failas << std::setprecision(3) << balas << '\t';
 	}
-	//void sort(list<Items>& Studentai) {
-	//	Studentai.sort(final_mark_sorting);
-	//}
-	//void sort(deque<Items>& Studentai) {
-	//	sort(Studentai.begin(), Studentai.end(), final_mark_sorting);
-	//}
+	failas << std::setprecision(3) << egz();
 }
+
+
+//namespace Custom {
+//	void sort(vector<Items>& Studentai) {
+//		std::sort(Studentai.begin(), Studentai.end(), final_mark_sorting);
+//	}
+//	//void sort(list<Items>& Studentai) {
+//	//	Studentai.sort(final_mark_sorting);
+//	//}
+//	//void sort(deque<Items>& Studentai) {
+//	//	sort(Studentai.begin(), Studentai.end(), final_mark_sorting);
+//	//}
+//}
+
+
 
 
 
