@@ -36,10 +36,10 @@ int main()
 			cout << "Done." << endl;
 			break;
 		case 4: {
-			//Failo_generavimas_v2<vector<Student>>("OUTPUT.txt", 1e5);
+			Failo_generavimas_v2<vector<Student>>("OUTPUT.txt", 1000000);
 			Timer laikas;
 
-			Failo_nuskaitymas<vector<Student>>("output.txt", "neprint", "skirstyti", strategija);
+			Failo_nuskaitymas<vector<Student>>("OUTPUT.txt", "neprint", "skirstyti", strategija);
 			cout << "strategija:(" << strategija << "):suskirstymas <vector>\t(n = 10,000): " << laikas.elapsed() << " s" << endl; //end
 			break;
 		}
