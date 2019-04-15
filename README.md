@@ -20,21 +20,21 @@
         </tr>
         <tr>
             <th>struct</th>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>0.106002</td>
+            <td>0.102461</td>
+            <td>0.104170</td>
+            <td>0.946415</td>
+            <td>0.892254</td>
+            <td>0.864305</td>
         </tr>
         <tr>
             <th>class</th>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>0.164561</td>
+            <td>0.152082</td>
+            <td>0.151922</td>
+            <td>1.471150</td>
+            <td>1.448763</td>
+            <td>1.410840</td>
         </tr>
     </tbody>
 </table>
