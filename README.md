@@ -1,4 +1,22 @@
 # 3_uzduotis
+Ši užduotis yra [antro](https://github.com/Effanuel/Duomenu-apdorojimas) darbo tęsinys
+
+## Prerequisites
+1. GNU C++ Compiler
+
+## Installation
+1. [Atsisiūskite naujausią versiją.]()
+2. Extract failus.
+3. Per command-line:
+
+```
+cd 3_uzduotis
+make all
+./project
+```
+
+## Releases
+### [v1.10](www.google.com)
 
 <table>
     <thead>
