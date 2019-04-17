@@ -1,12 +1,12 @@
-#include "mano_func.h"
+#include "Functions.h"
 #include "Studentas.h"
 
 int main()
 {
 	cout << std::string(40, '=') << endl;
 
-	int choice;
-	cout << "1 - Ivesti data rankomis;\n2 - Skaityti data is failo;\n3 - Sugeneruos failus is 10,000 studentu;\n4 - vector<class Student> greicio testavimas\n" << std::string(40, '=') << endl;
+	int choice; 
+	cout << "1 - Ivesti data rankomis;\n2 - Skaityti data is failo;\n3 - Sugeneruos failus is 100 studentu;\n4 - vector<class Student> greicio testavimas\n" << std::string(40, '=') << endl;
 	choice = cin_and_checkFormat_in_interval<int>(1, 4);
 	constexpr int strategija = 1;
 	try {
@@ -16,11 +16,11 @@ int main()
 			break;
 		}
 		case 2:
-			Failo_nuskaitymas<vector<Student>>("kursiokai.txt");
+			Failo_nuskaitymas<vector<Student>>("kursiokai.txt", "print", "neskirstyti", strategija);
 			break;
 		case 3:
-			Failo_generavimas_v2<vector<Student>>("OUTPUT.txt", 10000); // generate file
-			Failo_nuskaitymas<vector<Student>>("OUTPUT.txt", "print", "skirstyti"); //split file
+			Failo_generavimas_v2<vector<Student>>("OUTPUT.txt", 100); // generate file
+			Failo_nuskaitymas<vector<Student>>("OUTPUT.txt", "print", "skirstyti", strategija); //split file
 			cout << "Done." << endl;
 			break;
 		case 4: {
