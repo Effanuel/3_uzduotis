@@ -2,7 +2,6 @@
 #include "median.h"
 
 #include <string>
-//#include <vector> 'median'
 #include <fstream>
 #include <numeric>
 #include <algorithm>
@@ -37,12 +36,11 @@ public:
 
 
 
-template <typename T> void Sukurti_studenta(T&, string, string, vector<double>, double);
 
 bool final_mark_sorting(const Student &, const Student &);//+
 bool alphabetical_sorting(const Student &, const Student &);//+
 
-
+template <typename T> void Sukurti_studenta(T&, string, string, vector<double>, double);
 
 template <typename T> void Sukurti_studenta(T& Studentai, string vardas, string pavarde, vector<double> balai, double egz) { //&
 	Studentai.emplace_back(vardas, pavarde, balai, egz);

@@ -1,9 +1,5 @@
 ﻿#include "Studentas.h"
 
-//PATCH
-//egz final med vid updated to double
-//sukurti studenta uses emplace back instead of pushback
-
 double median(vector<double> arr) {
 	typedef vector<double>::size_type vecSize;
 	vecSize size = arr.size();
@@ -78,6 +74,3 @@ bool alphabetical_sorting(const Student &a, const Student &b) //sortina pagal ab
 {
 	return a.pavarde() < b.pavarde();
 }
-
-
-

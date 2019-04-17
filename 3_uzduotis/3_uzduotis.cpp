@@ -1,11 +1,8 @@
 #include "mano_func.h"
 #include "Studentas.h"
 
-
-
 int main()
 {
-	//cout << "Ivedus mokinio varda, pavarde, 'n' namu darbu balus\nir egzamino bala, bus isvedama lentele.\n" << std::string(40, '=') << endl;
 	cout << std::string(40, '=') << endl;
 
 	int choice;
@@ -15,15 +12,6 @@ int main()
 	try {
 		switch (choice) {
 		case 1: {
-			//vector<Student> Studentai;
-			//vector<double> balai{ 1, 2, 3, 4, 5 };
-			//Studentai.emplace_back("ok", "123", balai, 6.2);
-			//Studentai.emplace_back("ok", "123", balai, 6.2);
-			//Sukurti_studenta(Studentai, "ok", "123", balai, 6.2);
-
-			//for (const auto& stud : Studentai) {
-			//	cout << stud.vardas() << stud.pavarde() << endl;
-			//}
 			Duomenu_ivedimas<vector<Student>>();
 			break;
 		}
@@ -31,12 +19,12 @@ int main()
 			Failo_nuskaitymas<vector<Student>>("kursiokai.txt");
 			break;
 		case 3:
-			Failo_generavimas_v2<vector<Student>>("OUTPUT.txt", 10); // generate file
+			Failo_generavimas_v2<vector<Student>>("OUTPUT.txt", 10000); // generate file
 			Failo_nuskaitymas<vector<Student>>("OUTPUT.txt", "print", "skirstyti"); //split file
 			cout << "Done." << endl;
 			break;
 		case 4: {
-			//Failo_generavimas_v2<vector<Student>>("OUTPUT.txt", 1e5);
+			Failo_generavimas_v2<vector<Student>>("OUTPUT.txt", 10000);
 			Timer laikas;
 
 			Failo_nuskaitymas<vector<Student>>("output.txt", "neprint", "skirstyti", strategija);

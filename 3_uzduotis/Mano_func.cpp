@@ -1,7 +1,5 @@
 #include "mano_func.h"
 
-
-
 void random_num_generator(vector<double>& balai, double& egz) {
 
 	static std::mt19937 gen;
@@ -15,9 +13,7 @@ void random_num_generator(vector<double>& balai, double& egz) {
 	egz = distr(gen);
 }
 
-//
-
-string cin_and_checkFormat() { //v1.07
+string cin_and_checkFormat() {
 	string name;
 	do {
 		cin >> name;
