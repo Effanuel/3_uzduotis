@@ -61,7 +61,7 @@ void random_num_generator(vector<double>&, double&);
 
 template <typename T> void Rankinis_ivedimas(T&, string&, string&, vector<string>, vector<string>);
 template <typename T> T cin_and_checkFormat_in_interval(int, int);
-template <typename T> void Failo_nuskaitymas(string, string, string, int);
+//template <typename T> void Failo_nuskaitymas(string, string, string, int);
 template <typename T> void Failo_skirstymas(int, T&);
 template <typename T> void writeToFile(T&, string);
 template <typename T> void writeToFile_egz(T&, string);
