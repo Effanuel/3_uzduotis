@@ -59,7 +59,7 @@ void random_num_generator(vector<double>&, double&);
 
 
 
-template <typename T> void Rankinis_ivedimas(T&, string&, string&, vector<string>, vector<string>);
+template <typename T> void Rankinis_ivedimas(T&, string&, string&, vector<string>&, vector<string>&);
 template <typename T> T cin_and_checkFormat_in_interval(int, int);
 //template <typename T> void Failo_nuskaitymas(string, string, string, int);
 template <typename T> void Failo_skirstymas(int, T&);
@@ -275,7 +275,7 @@ template <typename T> void StudentGenerator(T& Studentai, int stud_skaicius, vec
 	}
 }
 
-template <typename T> void Rankinis_ivedimas(T& Studentai, string& vardas, string& pavarde, vector<string> vardai, vector<string> pavardes) {
+template <typename T> void Rankinis_ivedimas(T& Studentai, string& vardas, string& pavarde, vector<string>& vardai, vector<string>& pavardes) {
 
 	double egz{};
 	vector<double> balai;

@@ -43,6 +43,13 @@ void Student::writeToFile(string filename, std::ofstream& failas) {
 	failas << std::setprecision(3) << egz();
 }
 
+bool operator==(const Student& a, const Student& b) {
+	return a.galBalas() == b.galBalas();
+
+}
+
+
+
 
 //namespace Custom {
 //	void sort(vector<Student>& Studentai) {
