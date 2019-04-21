@@ -12,7 +12,7 @@
 ```
 cd 3_uzduotis
 make all
-./project
+project
 ```
 
 ## Releases
