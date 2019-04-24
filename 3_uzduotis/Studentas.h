@@ -29,8 +29,8 @@ public:
 	double galBalas(double(*kriterijus) (vector<double>) = median) const;
 
 	friend bool operator==(const Student&, const Student&);
-
-
+	friend std::ostream& operator<<(std::ostream&, const Student&);
+	
 	void writeToFile(string file_name, std::ofstream& failas);
 	void randomStudent();
 
