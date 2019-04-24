@@ -1,9 +1,5 @@
 ﻿#include "Studentas.h"
 
-//PATCH
-//egz final med vid updated to double
-//sukurti studenta uses emplace back instead of pushback
-
 double median(vector<double> arr) {
 	typedef vector<double>::size_type vecSize;
 	vecSize size = arr.size();
@@ -47,6 +43,13 @@ void Student::writeToFile(string filename, std::ofstream& failas) {
 	failas << std::setprecision(3) << egz();
 }
 
+bool operator==(const Student& a, const Student& b) {
+	return a.galBalas() == b.galBalas();
+
+}
+
+
+
 
 //namespace Custom {
 //	void sort(vector<Student>& Studentai) {
@@ -78,6 +81,3 @@ bool alphabetical_sorting(const Student &a, const Student &b) //sortina pagal ab
 {
 	return a.pavarde() < b.pavarde();
 }
-
-
-

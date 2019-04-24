@@ -52,19 +52,64 @@ public:
 };
 
 
-string cin_and_checkFormat();
-void random_num_generator(vector<double>&, double&);
-template <typename T> void Rankinis_ivedimas(T&, string&, string&, vector<string>, vector<string>);
 int max_len(vector<string>);//+
 bool cool_students_sort(const Student &);//+
+string cin_and_checkFormat();
+void random_num_generator(vector<double>&, double&);
 
 
+
+template <typename T> void Rankinis_ivedimas(T&, string&, string&, vector<string>&, vector<string>&);
 template <typename T> T cin_and_checkFormat_in_interval(int, int);
-template <typename T> void Failo_nuskaitymas(string, string, string, int);
+//template <typename T> void Failo_nuskaitymas(string, string, string, int);
 template <typename T> void Failo_skirstymas(int, T&);
 template <typename T> void writeToFile(T&, string);
 template <typename T> void writeToFile_egz(T&, string);
 template <typename T> void generateFile(T&, T&);
+
+
+
+void random_num_generator(vector<double>& balai, double& egz) {
+
+	static std::mt19937 gen;
+	gen.seed(std::random_device()());
+	static std::uniform_real_distribution<double> distr(1, 10);
+
+	balai.resize(5); //5 namu darbai
+	generate(balai.begin(), balai.end(), []() {
+		return distr(gen);
+	});
+	egz = distr(gen);
+}
+
+string cin_and_checkFormat() {
+	string name;
+	do {
+		cin >> name;
+		for (auto &r : name) {
+			if (toupper(r) < 'A' || toupper(r) > 'Z') {
+				std::cout << "Netinkamas vardo formatas formatas. Iveskite is naujo: " << endl;
+				cin.clear();
+				name.clear(); //erases 'name' contents
+				cin.ignore(1000, '\n');
+				break;
+			}
+		}
+	} while (name == "");
+	return name;
+}
+
+bool cool_students_sort(const Student &n) {
+	return n.galBalas() >= 5.0;
+}
+
+
+
+
+
+
+
+
 
 template <typename T> T cin_and_checkFormat_in_interval(int a, int b) {
 	T input;
@@ -230,7 +275,7 @@ template <typename T> void StudentGenerator(T& Studentai, int stud_skaicius, vec
 	}
 }
 
-template <typename T> void Rankinis_ivedimas(T& Studentai, string& vardas, string& pavarde, vector<string> vardai, vector<string> pavardes) {
+template <typename T> void Rankinis_ivedimas(T& Studentai, string& vardas, string& pavarde, vector<string>& vardai, vector<string>& pavardes) {
 
 	double egz{};
 	vector<double> balai;

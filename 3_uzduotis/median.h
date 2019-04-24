@@ -1,7 +1,6 @@
 #pragma once
 #include <vector>
 
-using std::vector;
 
-double median(vector<double>);
-double vidurkis(vector<double>);
+double median(std::vector<double>);
+double vidurkis(std::vector<double>);
