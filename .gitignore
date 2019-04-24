@@ -39,6 +39,7 @@
 .vs/
 Debug/
 Release/
+x64
 
 3_uzduotis.vcxproj
 *.vcxproj	
