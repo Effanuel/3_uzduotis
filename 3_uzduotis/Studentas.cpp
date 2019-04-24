@@ -48,6 +48,15 @@ bool operator==(const Student& a, const Student& b) {
 
 }
 
+std::ostream& operator<<(std::ostream& out, const Student& stud) {
+	out << stud.vardas() << '\t' << stud.pavarde() << '\t';
+	for (auto& balas : stud.balai()) {
+		out << std::setprecision(3) << balas << '\t';
+	}
+	out << std::setprecision(3) << stud.galBalas();
+	return out;
+}
+
 
 
 
