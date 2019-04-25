@@ -16,7 +16,7 @@ project
 ```
 
 ## Releases
-### [v1.10](www.google.com)
+### [v1.10](https://github.com/Effanuel/3_uzduotis/releases/tag/v1.11)
 
 <table>
     <thead>
@@ -56,3 +56,14 @@ project
         </tr>
     </tbody>
 </table>
+
+
+### [v1.20](www.google.com)
+
+### Added overloaded operators
+```C++
+	friend bool operator==(const Student&, const Student&);
+	friend bool operator!=(const Student&, const Student&);
+	friend std::ostream& operator<<(std::ostream&, const Student&);
+	friend std::istream& operator>>(std::istream&, Student&);
+```
