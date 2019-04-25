@@ -60,10 +60,10 @@ project
 
 ### [v1.20](www.google.com)
 
-### Added overloaded operators
+### Added overloaded operators:
 ```C++
-	friend bool operator==(const Student&, const Student&);
-	friend bool operator!=(const Student&, const Student&);
-	friend std::ostream& operator<<(std::ostream&, const Student&);
-	friend std::istream& operator>>(std::istream&, Student&);
+friend bool operator==(const Student&, const Student&);
+friend bool operator!=(const Student&, const Student&);
+friend std::ostream& operator<<(std::ostream&, const Student&);
+friend std::istream& operator>>(std::istream&, Student&);
 ```
