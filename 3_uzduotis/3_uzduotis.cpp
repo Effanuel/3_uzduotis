@@ -1,5 +1,5 @@
 #include "Functions.h"
-#include "Studentas.h"
+
 
 int main()
 {
@@ -12,7 +12,12 @@ int main()
 	try {
 		switch (choice) {
 		case 1: {
-			Duomenu_ivedimas<vector<Student>>();
+			vector<double> vec{ 1, 2, 3, 4 , 5 };
+			Student a{ "a", "b", vec, 5 };
+			Student b;
+			cin >> b;
+			cout << b << endl;
+			//Duomenu_ivedimas<vector<Student>>();
 			break;
 		}
 		case 2:

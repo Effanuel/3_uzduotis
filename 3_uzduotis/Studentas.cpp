@@ -47,6 +47,11 @@ bool operator==(const Student& a, const Student& b) {
 	return a.galBalas() == b.galBalas();
 
 }
+bool operator!=(const Student& a, const Student& b) {
+	return a.galBalas() != b.galBalas();
+
+}
+
 
 std::ostream& operator<<(std::ostream& out, const Student& stud) {
 	out << stud.vardas() << '\t' << stud.pavarde() << '\t';
@@ -55,6 +60,44 @@ std::ostream& operator<<(std::ostream& out, const Student& stud) {
 	}
 	out << std::setprecision(3) << stud.galBalas();
 	return out;
+}
+
+std::istream& operator>>(std::istream& in, Student& stud) {
+	std::cout << "Iveskite mokinio varda ir pavarde: " << std::endl;
+	stud.vardas_ = cin_and_checkFormat(in);
+	stud.pavarde_ = cin_and_checkFormat(in);
+
+	double ndbalai;
+	std::cout << "Iveskite namu darbu rezultatus(0 arba raide sustabdys ivedinejima): " << std::endl;
+	while (in >> ndbalai && ndbalai != 0 && ndbalai < 10 && ndbalai > 0) { //int(ndbalai)
+		stud.balai_.push_back(ndbalai);
+	}
+	if (stud.balai_.empty()) { //error handling
+		stud.balai_.resize(1);
+	}
+	in.clear();
+	in.ignore(1000, '\n'); // nepersoka i return
+	std::cout << "Egzamino rezultatas(1-10): " << std::endl;
+	in >> stud.egz_;
+	return in;
+	
+}
+
+string cin_and_checkFormat(std::istream& in) {
+	string name;
+	do {
+		in >> name;
+		for (auto& r : name) {
+			if (toupper(r) < 'A' || toupper(r) > 'Z') {
+				std::cout << "Netinkamas vardo formatas formatas. Iveskite is naujo: " << std::endl;
+				in.clear();
+				name.clear(); //erases 'name' contents
+				in.ignore(1000, '\n');
+				break;
+			}
+		}
+	} while (name == "");
+	return name;
 }
 
 
