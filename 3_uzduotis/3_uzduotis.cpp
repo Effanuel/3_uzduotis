@@ -12,12 +12,7 @@ int main()
 	try {
 		switch (choice) {
 		case 1: {
-			vector<double> vec{ 1, 2, 3, 4 , 5 };
-			Student a{ "a", "b", vec, 5 };
-			Student b;
-			cin >> b;
-			cout << b << endl;
-			//Duomenu_ivedimas<vector<Student>>();
+			Duomenu_ivedimas<vector<Student>>();
 			break;
 		}
 		case 2:
