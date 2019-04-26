@@ -44,7 +44,7 @@ public:
 };
 
 
-
+double cin_and_checkFormat_in_interval(std::istream&);
 string cin_and_checkFormat(std::istream&);
 bool final_mark_sorting(const Student &, const Student &);//+
 bool alphabetical_sorting(const Student &, const Student &);//+

@@ -78,7 +78,7 @@ std::istream& operator>>(std::istream& in, Student& stud) {
 	in.clear();
 	in.ignore(1000, '\n'); // nepersoka i return
 	std::cout << "Egzamino rezultatas(1-10): " << std::endl;
-	in >> stud.egz_;
+	stud.egz_ = cin_and_checkFormat_in_interval(in);
 	return in;
 	
 }
@@ -98,6 +98,16 @@ string cin_and_checkFormat(std::istream& in) {
 		}
 	} while (name == "");
 	return name;
+}
+
+double cin_and_checkFormat_in_interval(std::istream& in) {
+	double input;
+	while (!(std::cin >> input) || 1 > input || input > 10) {
+		std::cout << "Netinkamas ivesties formatas. Iveskite is naujo: " << std::endl;
+		in.clear();
+		in.ignore(1000, '\n');
+	}
+	return input;
 }
 
 
