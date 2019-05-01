@@ -3,9 +3,6 @@
 #include "Studentas.h"
 #include "median.h"
 
-#include <iostream>
-#include <algorithm> //sort
-#include <numeric> //accumulate
 #include <exception> 
 
 #include <vector>
@@ -15,12 +12,9 @@
 #include <fstream>
 #include <typeinfo>
 #include <chrono>
-#include <random>
-#include <iomanip>
 #include <string>
 
 #include <istream>
-
 
 using std::cout;
 using std::cin;

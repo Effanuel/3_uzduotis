@@ -43,6 +43,21 @@ void Student::writeToFile(string filename, std::ofstream& failas) {
 	failas << std::setprecision(3) << egz();
 }
 
+
+Student& Student::operator=(const Student& s) {
+	if (&s == this) return *this;
+
+	Zmogus::operator=(s);
+	balai_ = s.balai_;
+	egz_ = s.egz_;
+	return *this;
+
+}
+
+
+
+
+
 bool operator==(const Student& a, const Student& b) {
 	return a.galBalas() == b.galBalas();
 

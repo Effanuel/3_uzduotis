@@ -1,7 +1,7 @@
 #pragma once
+#include "Zmogus.h"
 #include "median.h"
 
-#include <string>
 #include <fstream>
 #include <numeric>
 #include <algorithm>
@@ -9,24 +9,29 @@
 #include <iomanip> 
 #include <iostream>
 
-using std::string;
 using std::vector;
 
 
-class Student
+class Student : public Zmogus
 {
 private:
-	string vardas_, pavarde_;
 	vector<double> balai_;
 	double egz_;
 public:
-	Student() : egz_(0) { }
+	Student() : Zmogus(), egz_(0) { }
 	Student(string vardas, string pavarde, vector<double> balai, double egz) //copy constr
-		: vardas_(vardas), pavarde_(pavarde), balai_(balai), egz_(egz) {}
+		: Zmogus(vardas, pavarde), balai_(balai), egz_(egz) {}
+
+	Student(const Student& v) //copy constr
+		: Zmogus(v), balai_{ v.balai_ }, egz_{ v.egz_ } {}
+
+	
+	//Student(Student&& a) : Zmogus(a), balai_{ std::move(a.balai_) }, egz_{ std::move(a.egz_) } {}
+	
 	//Student(Student&& a) noexcept //move constr
 	//	: vardas_(a.vardas_), pavarde_(a.pavarde_), balai_(std::move(a.balai_)), egz_(a.egz_) {}
-	string vardas() const { return vardas_; }
-	string pavarde() const { return pavarde_; }
+	//string vardas() const { return vardas_; }
+	//string pavarde() const { return pavarde_; }
 	double egz() const { return egz_; }
 	vector<double> balai() const { return balai_; }
 	double galBalas(double(*kriterijus) (vector<double>) = median) const;
@@ -36,6 +41,8 @@ public:
 	friend std::ostream& operator<<(std::ostream&, const Student&);
 	friend std::istream& operator>>(std::istream&, Student&);
 	
+	Student& operator=(const Student&);
+
 	void writeToFile(string file_name, std::ofstream& failas);
 	void randomStudent();
 
