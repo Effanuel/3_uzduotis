@@ -19,19 +19,14 @@ private:
 	double egz_;
 public:
 	Student() : Zmogus(), egz_(0) { }
-	Student(string vardas, string pavarde, vector<double> balai, double egz) //copy constr
+	Student(string vardas, string pavarde, vector<double> balai, double egz) //copy constr, called on emplace_back
 		: Zmogus(vardas, pavarde), balai_(balai), egz_(egz) {}
 
 	Student(const Student& v) //copy constr
 		: Zmogus(v), balai_{ v.balai_ }, egz_{ v.egz_ } {}
 
-	
 	//Student(Student&& a) : Zmogus(a), balai_{ std::move(a.balai_) }, egz_{ std::move(a.egz_) } {}
 	
-	//Student(Student&& a) noexcept //move constr
-	//	: vardas_(a.vardas_), pavarde_(a.pavarde_), balai_(std::move(a.balai_)), egz_(a.egz_) {}
-	//string vardas() const { return vardas_; }
-	//string pavarde() const { return pavarde_; }
 	double egz() const { return egz_; }
 	vector<double> balai() const { return balai_; }
 	double galBalas(double(*kriterijus) (vector<double>) = median) const;

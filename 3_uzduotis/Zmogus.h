@@ -8,8 +8,7 @@ class Zmogus {
 public:
 	string vardas_;
 	string pavarde_;
-	Zmogus() : vardas_{""}, pavarde_{""} {}
-	explicit Zmogus(string& v, string& p) : vardas_(v), pavarde_(p) {}
+	Zmogus(string v = "", string p = "") : vardas_(v), pavarde_(p) {}
 	Zmogus(const Zmogus& p) : vardas_{ p.vardas_ }, pavarde_{ p.pavarde_ } {}
 	//Zmogus(Zmogus&& a) : vardas_{ std::move(a.vardas_) }, pavarde_{ std::move(a.pavarde_) } {}
 

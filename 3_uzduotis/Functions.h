@@ -318,9 +318,15 @@ template <typename T> void Duomenu_ivedimas() {
 		StudentGenerator(Studentai, stud_skaicius, vardai, pavardes);
 		break;
 	default:
-		string vardas{};
-		string pavarde{};
-		Rankinis_ivedimas(Studentai, vardas, pavarde, vardai, pavardes);
+		char more;
+		do {
+			string vardas{};
+			string pavarde{};
+			Rankinis_ivedimas(Studentai, vardas, pavarde, vardai, pavardes);
+			
+			cout << "Ar norite ivesti dar viena studenta?(y/n)" << endl;
+			cin >> more;
+		} while (more == 'y');
 		break;
 	}
 	Print_table(Studentai, max_len(vardai), max_len(pavardes));
