@@ -25,7 +25,7 @@ public:
 	Student(const Student& v) //copy constr
 		: Zmogus(v), balai_{ v.balai_ }, egz_{ v.egz_ } {}
 
-	//Student(Student&& a) : Zmogus(a), balai_{ std::move(a.balai_) }, egz_{ std::move(a.egz_) } {}
+	Student(Student&& a) noexcept : Zmogus(a), balai_{ std::move(a.balai_) }, egz_{ std::move(a.egz_) } {} //VS19 warning about no except
 	
 	double egz() const { return egz_; }
 	vector<double> balai() const { return balai_; }
