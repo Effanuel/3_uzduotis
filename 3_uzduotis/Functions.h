@@ -1,5 +1,4 @@
 ﻿#pragma once
-
 #include "Studentas.h"
 #include "median.h"
 
@@ -13,7 +12,6 @@
 #include <typeinfo>
 #include <chrono>
 #include <string>
-
 #include <istream>
 
 using std::cout;
@@ -21,50 +19,98 @@ using std::cin;
 using std::endl;
 using std::sort;
 using std::generate;
-using std::vector;
-using std::list;
-using std::deque;
+//using std::list;
+//using std::deque;
 using std::string;
 
 
 
 
-
+/**
+Timer objektas laiko skaiciavimui
+*/
 class Timer {
 private:
+	///Auksto tikslumo laikrodi
 	using hrClock = std::chrono::high_resolution_clock;
+	///Double trukmes skaiciavimas
 	using durationDouble = std::chrono::duration<long double>;
 	std::chrono::time_point<hrClock> start;
 public:
+	///Sukuria Timer() objekta, pradeda skaiciuoti laika
 	Timer() : start{ hrClock::now() } {}
+	///Pradeda skaiciuoti laika is pradziu
 	void reset() {
 		start = hrClock::now();
 	}
+	///Grazina laika nuo Timer() sukurimo/reset() iki sios funkcijos call
 	long double elapsed() const {
 		return durationDouble(hrClock::now() - start).count();
 	}
 };
 
-
-int max_len(vector<string>);//+
-bool cool_students_sort(const Student &);//+
-string cin_and_checkFormat();
+/**
+Suranda dydziausio ilgio string vector'iuje
+*/
+int max_len(vector<string>);
+/**
+Pagalbine funckija atskirti kietus nuo levu studentu
+*/
+bool cool_students_sort(const Student &);
+/**
+Generuoja atsitiktinius 5 namu darbu balus ir 1 egzamino bala
+*/
 void random_num_generator(vector<double>&, double&);
-
-
-
+/**
+Antrine funkcija Studento duomenu ivedimui per console
+*/
 template <typename T> void Rankinis_ivedimas(T&, string&, string&, vector<string>&, vector<string>&);
+/**
+Skaiciaus ivedimo ir formato patikrinimo funkcija (tarp a ir b)
+*/
 template <typename T> T cin_and_checkFormat_in_interval(double, double);
-//template <typename T> void Failo_nuskaitymas(string, string, string, int);
+/**
+Isskirsto vector<Student> i kietus ir levus
+*/
 template <typename T> void Failo_skirstymas(int, T&);
+/**
+Pagalbine funkcija container'i irasyti i faila
+*/
 template <typename T> void writeToFile(T&, string);
+/**
+Pagalbine funkcija (vectoriu is Studentu) irasyti i faila call'inant member function
+*/
 template <typename T> void writeToFile_egz(T&, string);
+/**
+Sugeneruoja 2 atskirus failus is pateiktu container'iu
+(default: SILPNI ir KIETI)
+*/
 template <typename T> void generateFile(T&, T&);
+/**
+Pilno Studento su vardu, pavarde, nd, egz sugeneravimas
+*/
+template <typename T> void StudentGenerator(T&, int, vector<string>&, vector<string>&);
+/**
+Atsitiktinai sugeneruoja faila is kazkokio kiekio Studentu
+*/
+template <typename T> void Failo_generavimas_v2(string, unsigned int);
+/**
+Pagrindine funkcija Studento duomenu ivedimui/generavimui per console
+*/
+template <typename T> void Duomenu_ivedimas();
+/**
+Nuskaito faila ir/arba print'ina/skirsto
+*/
+template <typename T> void Failo_nuskaitymas(string, string, string, int);
+/**
+Spausdina Studento duomenis lenteleje
+*/
+template <typename T> void Print_table(T&, int, int);
 
 
 
+//--------------------
 void random_num_generator(vector<double>& balai, double& egz) {
-
 	static std::mt19937 gen;
 	gen.seed(std::random_device()());
 	static std::uniform_real_distribution<double> distr(1, 10);
@@ -75,36 +121,11 @@ void random_num_generator(vector<double>& balai, double& egz) {
 	});
 	egz = distr(gen);
 }
-
-string cin_and_checkFormat() {
-	string name;
-	do {
-		cin >> name;
-		for (auto &r : name) {
-			if (toupper(r) < 'A' || toupper(r) > 'Z') {
-				std::cout << "Netinkamas vardo formatas formatas. Iveskite is naujo: " << endl;
-				cin.clear();
-				name.clear(); //erases 'name' contents
-				cin.ignore(1000, '\n');
-				break;
-			}
-		}
-	} while (name == "");
-	return name;
-}
-
+//--------------------
 bool cool_students_sort(const Student &n) {
 	return n.galBalas() >= 5.0;
 }
-
-
-
-
-
-
-
-
-
+//--------------------
 template <typename T> T cin_and_checkFormat_in_interval(double a, double b) {
 	T input;
 	while (!(cin >> input) || a > input || input > b) {
@@ -114,8 +135,7 @@ template <typename T> T cin_and_checkFormat_in_interval(double a, double b) {
 	}
 	return input;
 }
-
-
+//--------------------
 template <typename T> void writeToFile(T& Studentai, string filename) {
 	std::ofstream failas(filename);
 	for (auto& studentas : Studentai) {
@@ -127,9 +147,7 @@ template <typename T> void writeToFile(T& Studentai, string filename) {
 	}
 	failas.close();
 }
-
-
-
+//--------------------
 template <typename T> void writeToFile_egz(T& Studentai, string filename) {
 	std::ofstream failas(filename);
 	for (auto& Studentas : Studentai) {
@@ -137,23 +155,16 @@ template <typename T> void writeToFile_egz(T& Studentai, string filename) {
 	}
 	failas.close();
 }
-
-
-
+//--------------------
 template <typename T> void generateFile(T& Studentai_kieti, T& Studentai_silpni) {
 	writeToFile(Studentai_kieti, "OUTPUT_KIETI.txt");
 	writeToFile(Studentai_silpni, "OUTPUT_SILPNI.txt");
 }
-
-
-
-
-
-
+//--------------------
 template <typename T> void Failo_generavimas_v2(string filename, unsigned int n = 1000) { //sugeneruoja faila tiktais
-	//Studentai.reserve(n);
+	
 	T Studentai;
-
+	//Studentai.reserve(n); //tik vector'iui
 
 	vector<double> temp_balai;
 	double temp_egz;
@@ -168,9 +179,7 @@ template <typename T> void Failo_generavimas_v2(string filename, unsigned int n 
 	writeToFile_egz(Studentai, filename);
 
 }
-
-
-
+//--------------------
 template <typename T> void Failo_nuskaitymas(string file_name, string print = "print", string skirstymas = "neskirstyti", int strategija = 1) {
 	T Studentai;
 	string vardas{}, pavarde{};
@@ -202,21 +211,14 @@ template <typename T> void Failo_nuskaitymas(string file_name, string print = "p
 	}
 	failas.close();
 
-
-
-
 	if (print == "print") {
 		Print_table(Studentai, max_len(vardai), max_len(pavardes));
 	}
-
 	if (skirstymas == "skirstyti") {
 		Failo_skirstymas(strategija, Studentai);
 	}
-
 }
-
-
-
+//--------------------
 template <typename T> void Failo_skirstymas(int strategija, T& Studentai) {
 	if (strategija == 1) { //STRATEGY #1
 		//Custom::sort(Studentai);
@@ -255,11 +257,10 @@ template <typename T> void Failo_skirstymas(int strategija, T& Studentai) {
 			else
 				++it;
 		}
-
 		generateFile(Studentai, Studentai_levi);
 	}
 }
-
+//--------------------
 template <typename T> void StudentGenerator(T& Studentai, int stud_skaicius, vector<string>& vardai, vector<string>& pavardes) {
 	Studentai.resize(stud_skaicius);
 	for (auto& Studentas : Studentai) {
@@ -268,15 +269,15 @@ template <typename T> void StudentGenerator(T& Studentai, int stud_skaicius, vec
 		pavardes.push_back(Studentas.pavarde());
 	}
 }
-
+//--------------------
 template <typename T> void Rankinis_ivedimas(T& Studentai, string& vardas, string& pavarde, vector<string>& vardai, vector<string>& pavardes) {
 
 	double egz{};
 	vector<double> balai;
 
 	cout << "Iveskite mokinio varda ir pavarde: " << endl;
-	vardas = cin_and_checkFormat();
-	pavarde = cin_and_checkFormat();
+	vardas = cin_and_checkFormat(cin);
+	pavarde = cin_and_checkFormat(cin);
 
 	vardai.push_back(vardas);
 	pavardes.push_back(pavarde);
@@ -298,7 +299,7 @@ template <typename T> void Rankinis_ivedimas(T& Studentai, string& vardas, strin
 
 
 }
-
+//--------------------
 template <typename T> void Duomenu_ivedimas() {
 	//balai.reserve(2);
 	T Studentai;
@@ -331,11 +332,7 @@ template <typename T> void Duomenu_ivedimas() {
 	}
 	Print_table(Studentai, max_len(vardai), max_len(pavardes));
 }
-
-
-
-
-
+//--------------------
 template <typename T> void Print_table(T& Studentai, int max_vardas, int max_pavarde) {
 	printf("%s\n", std::string((max_pavarde + max_vardas) + 14 + 14 + 12 + 8, '-').c_str());
 	printf("%*s %*s %*s %s\n", -int(max_pavarde) - 7, "Pavarde", -int(max_vardas) - 7, "Vardas", -19, "VidGalutinis", "MedGalutinis");

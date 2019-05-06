@@ -1,0 +1,41 @@
+\hypertarget{class_timer}{}\section{Timer Class Reference}
+\label{class_timer}\index{Timer@{Timer}}
+
+
+{\ttfamily \#include $<$Functions.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_timer_a5f16e8da27d2a5a5242dead46de05d97}\label{class_timer_a5f16e8da27d2a5a5242dead46de05d97}} 
+\mbox{\hyperlink{class_timer_a5f16e8da27d2a5a5242dead46de05d97}{Timer}} ()
+\begin{DoxyCompactList}\small\item\em Sukuria \mbox{\hyperlink{class_timer_a5f16e8da27d2a5a5242dead46de05d97}{Timer()}} objekta, pradeda skaiciuoti laika. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_timer_a9020542d73357a4eef512eefaf57524b}\label{class_timer_a9020542d73357a4eef512eefaf57524b}} 
+void \mbox{\hyperlink{class_timer_a9020542d73357a4eef512eefaf57524b}{reset}} ()
+\begin{DoxyCompactList}\small\item\em Pradeda skaiciuoti laika is pradziu. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_timer_a4448fdb80f00982236dd8db16bf50fea}\label{class_timer_a4448fdb80f00982236dd8db16bf50fea}} 
+long double \mbox{\hyperlink{class_timer_a4448fdb80f00982236dd8db16bf50fea}{elapsed}} () const
+\begin{DoxyCompactList}\small\item\em Grazina laika nuo \mbox{\hyperlink{class_timer_a5f16e8da27d2a5a5242dead46de05d97}{Timer()}} sukurimo/reset() iki sios funkcijos call. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_timer_a5e72191005a6b2238ed91c3839374093}\label{class_timer_a5e72191005a6b2238ed91c3839374093}} 
+using \mbox{\hyperlink{class_timer_a5e72191005a6b2238ed91c3839374093}{hr\+Clock}} = std\+::chrono\+::high\+\_\+resolution\+\_\+clock
+\begin{DoxyCompactList}\small\item\em Auksto tikslumo laikrodi. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_timer_ad818a6ed2beb8b496d99bc31908fa6d6}\label{class_timer_ad818a6ed2beb8b496d99bc31908fa6d6}} 
+using \mbox{\hyperlink{class_timer_ad818a6ed2beb8b496d99bc31908fa6d6}{duration\+Double}} = std\+::chrono\+::duration$<$ long double $>$
+\begin{DoxyCompactList}\small\item\em Double trukmes skaiciavimas. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_timer_ad3c6240154d9bcccb88b701849919822}\label{class_timer_ad3c6240154d9bcccb88b701849919822}} 
+std\+::chrono\+::time\+\_\+point$<$ \mbox{\hyperlink{class_timer_a5e72191005a6b2238ed91c3839374093}{hr\+Clock}} $>$ {\bfseries start}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\mbox{\hyperlink{class_timer}{Timer}} objektas laiko skaiciavimui 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+3\+\_\+uzduotis/Functions.\+h\end{DoxyCompactItemize}

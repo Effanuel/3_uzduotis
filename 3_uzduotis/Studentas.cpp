@@ -1,5 +1,6 @@
 ﻿#include "Studentas.h"
 
+//--------------------
 double median(vector<double> arr) {
 	typedef vector<double>::size_type vecSize;
 	vecSize size = arr.size();
@@ -7,19 +8,16 @@ double median(vector<double> arr) {
 	return size % 2 != 0 ? arr[size / 2] : (arr[size / 2 - 1] + arr[size / 2]) / 2;
 
 }
-
-
+//--------------------
 double vidurkis(vector<double> arr) {
-
 	return std::accumulate(arr.begin(), arr.end(), 0.0) / arr.size();
 }
-
-
+//--------------------
 double Student::galBalas(double(*kriterijus)(vector<double>)) const {
 	if (balai_.empty()) throw std::domain_error("negalima skaiciuoti tusciam vektoriui");
 	return 0.6 * kriterijus(balai_) + 0.4 * egz_;
 }
-
+//--------------------
 void Student::randomStudent() {
 	static std::mt19937 gen;
 	gen.seed(std::random_device()());
@@ -33,8 +31,7 @@ void Student::randomStudent() {
 	});
 	egz_ = distr(gen);
 }
-
-
+//--------------------
 void Student::writeToFile(string filename, std::ofstream& failas) {
 	failas << '\n' << vardas() << '\t' << pavarde() << '\t';
 	for (auto& balas : balai()) {
@@ -42,8 +39,7 @@ void Student::writeToFile(string filename, std::ofstream& failas) {
 	}
 	failas << std::setprecision(3) << egz();
 }
-
-
+//--------------------
 Student& Student::operator=(const Student& s) {
 	if (&s == this) return *this;
 
@@ -53,21 +49,15 @@ Student& Student::operator=(const Student& s) {
 	return *this;
 
 }
-
-
-
-
-
+//--------------------
 bool operator==(const Student& a, const Student& b) {
 	return a.galBalas() == b.galBalas();
-
 }
+//--------------------
 bool operator!=(const Student& a, const Student& b) {
 	return a.galBalas() != b.galBalas();
-
 }
-
-
+//--------------------
 std::ostream& operator<<(std::ostream& out, const Student& stud) {
 	out << stud.vardas() << '\t' << stud.pavarde() << '\t';
 	for (auto& balas : stud.balai()) {
@@ -76,7 +66,7 @@ std::ostream& operator<<(std::ostream& out, const Student& stud) {
 	out << std::setprecision(3) << stud.galBalas();
 	return out;
 }
-
+//--------------------
 std::istream& operator>>(std::istream& in, Student& stud) {
 	std::cout << "Iveskite mokinio varda ir pavarde: " << std::endl;
 	stud.vardas_ = cin_and_checkFormat(in);
@@ -97,7 +87,7 @@ std::istream& operator>>(std::istream& in, Student& stud) {
 	return in;
 	
 }
-
+//--------------------
 string cin_and_checkFormat(std::istream& in) {
 	string name;
 	do {
@@ -114,7 +104,7 @@ string cin_and_checkFormat(std::istream& in) {
 	} while (name == "");
 	return name;
 }
-
+//--------------------
 double cin_and_checkFormat_in_interval(std::istream& in) {
 	double input;
 	while (!(std::cin >> input) || 1 > input || input > 10) {
@@ -124,9 +114,6 @@ double cin_and_checkFormat_in_interval(std::istream& in) {
 	}
 	return input;
 }
-
-
-
 
 //namespace Custom {
 //	void sort(vector<Student>& Studentai) {
@@ -140,21 +127,19 @@ double cin_and_checkFormat_in_interval(std::istream& in) {
 //	//}
 //}
 
-
-
-bool final_mark_sorting(const Student &a, const Student &b) //sortina pagal medianos galutini bala
+//--------------------
+bool final_mark_sorting(const Student &a, const Student &b)
 {
 	return a.galBalas() < b.galBalas();
 }
-
-int max_len(vector<string> data) { //suranda ilgiausia varda/pavarde
+//--------------------
+int max_len(vector<string> data) { 
 
 	auto func = [](const string &a, const string &b) {return a.size() < b.size(); };
 	return (*std::max_element(data.begin(), data.end(), func)).size();
 }
-
-
-bool alphabetical_sorting(const Student &a, const Student &b) //sortina pagal abecele
+//--------------------
+bool alphabetical_sorting(const Student &a, const Student &b)
 {
 	return a.pavarde() < b.pavarde();
 }

@@ -1,0 +1,79 @@
+\hypertarget{class_student}{}\section{Student Class Reference}
+\label{class_student}\index{Student@{Student}}
+
+
+{\ttfamily \#include $<$Studentas.\+h$>$}
+
+Inheritance diagram for Student\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_student}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_student_af9168cedbfa5565cf0b20c1a9d3f5c9d}\label{class_student_af9168cedbfa5565cf0b20c1a9d3f5c9d}} 
+\mbox{\hyperlink{class_student_af9168cedbfa5565cf0b20c1a9d3f5c9d}{Student}} ()
+\begin{DoxyCompactList}\small\item\em Konstruoja Studentas objekta. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_student_a9cede51655f18e40bdc9a249d73474e3}\label{class_student_a9cede51655f18e40bdc9a249d73474e3}} 
+\mbox{\hyperlink{class_student_a9cede51655f18e40bdc9a249d73474e3}{Student}} (string \mbox{\hyperlink{class_zmogus_a9ba88c78eedc8094a3b38cdf55228bae}{vardas}}, string \mbox{\hyperlink{class_zmogus_a0ccc9864e6fb821e519fc50afd96dfe1}{pavarde}}, vector$<$ double $>$ \mbox{\hyperlink{class_student_afe3edfa7fdf17153c6e081d06b5e8fbd}{balai}}, double \mbox{\hyperlink{class_student_a1faa264ba61eeec2f405ae59bbaf73b5}{egz}})
+\begin{DoxyCompactList}\small\item\em Studento objeckto copy constructor\textquotesingle{}ius skirtas emplace\+\_\+back. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_student_aae23d1f0b93ee01ed79c634a6cf7e2a5}\label{class_student_aae23d1f0b93ee01ed79c634a6cf7e2a5}} 
+\mbox{\hyperlink{class_student_aae23d1f0b93ee01ed79c634a6cf7e2a5}{Student}} (const \mbox{\hyperlink{class_student}{Student}} \&v)
+\begin{DoxyCompactList}\small\item\em Studento objeckto copy constructor\textquotesingle{}ius. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_student_ad557663fb6dcc2685b29239057aa27d5}\label{class_student_ad557663fb6dcc2685b29239057aa27d5}} 
+\mbox{\hyperlink{class_student_ad557663fb6dcc2685b29239057aa27d5}{Student}} (\mbox{\hyperlink{class_student}{Student}} \&\&a) noexcept
+\begin{DoxyCompactList}\small\item\em Studento objeckto move constructor\textquotesingle{}ius. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_student_a1faa264ba61eeec2f405ae59bbaf73b5}\label{class_student_a1faa264ba61eeec2f405ae59bbaf73b5}} 
+double \mbox{\hyperlink{class_student_a1faa264ba61eeec2f405ae59bbaf73b5}{egz}} () const
+\begin{DoxyCompactList}\small\item\em Grazina egzamino bala. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_student_afe3edfa7fdf17153c6e081d06b5e8fbd}\label{class_student_afe3edfa7fdf17153c6e081d06b5e8fbd}} 
+vector$<$ double $>$ \mbox{\hyperlink{class_student_afe3edfa7fdf17153c6e081d06b5e8fbd}{balai}} () const
+\begin{DoxyCompactList}\small\item\em Grazina namu darbu balus. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_student_aacdddbf3343515e337b171ada691c2ba}\label{class_student_aacdddbf3343515e337b171ada691c2ba}} 
+double \mbox{\hyperlink{class_student_aacdddbf3343515e337b171ada691c2ba}{gal\+Balas}} (double($\ast$kriterijus)(vector$<$ double $>$)=median) const
+\begin{DoxyCompactList}\small\item\em Skaiciuoja galutini bala pagal mediana arba vidurki (default mediana) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_student_aa6060eb7193de5bf6a4ae8e4a52bed45}\label{class_student_aa6060eb7193de5bf6a4ae8e4a52bed45}} 
+\mbox{\hyperlink{class_student}{Student}} \& \mbox{\hyperlink{class_student_aa6060eb7193de5bf6a4ae8e4a52bed45}{operator=}} (const \mbox{\hyperlink{class_student}{Student}} \&)
+\begin{DoxyCompactList}\small\item\em Studento priskyrimo operatorius (Rule of 5) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_student_a42d03d2dbf1b256adaa96b80d308a75f}\label{class_student_a42d03d2dbf1b256adaa96b80d308a75f}} 
+void \mbox{\hyperlink{class_student_a42d03d2dbf1b256adaa96b80d308a75f}{write\+To\+File}} (string file\+\_\+name, std\+::ofstream \&failas)
+\begin{DoxyCompactList}\small\item\em Iraso Studentas objekto duomenis i faila. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_student_a922459970b7cb86504bccfb22fec1ea7}\label{class_student_a922459970b7cb86504bccfb22fec1ea7}} 
+void \mbox{\hyperlink{class_student_a922459970b7cb86504bccfb22fec1ea7}{random\+Student}} ()
+\begin{DoxyCompactList}\small\item\em Generuoja atsitiktini Studenta objekta. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_student_a16e8d32dd3362b0019aa58d986afac08}\label{class_student_a16e8d32dd3362b0019aa58d986afac08}} 
+vector$<$ double $>$ \mbox{\hyperlink{class_student_a16e8d32dd3362b0019aa58d986afac08}{balai\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Studento namu darbu balai (5) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_student_a122ab4c2ceef32e2f3df785a34a627ff}\label{class_student_a122ab4c2ceef32e2f3df785a34a627ff}} 
+double \mbox{\hyperlink{class_student_a122ab4c2ceef32e2f3df785a34a627ff}{egz\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Studento egzamino balas. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_student_a0942ae3400d9d2365e5b563bb72ccfb6}\label{class_student_a0942ae3400d9d2365e5b563bb72ccfb6}} 
+bool \mbox{\hyperlink{class_student_a0942ae3400d9d2365e5b563bb72ccfb6}{operator==}} (const \mbox{\hyperlink{class_student}{Student}} \&, const \mbox{\hyperlink{class_student}{Student}} \&)
+\begin{DoxyCompactList}\small\item\em Tikrina ar Studentu objektai sutampa. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_student_a13c0f8ec52693be9891b40e6988ee558}\label{class_student_a13c0f8ec52693be9891b40e6988ee558}} 
+bool \mbox{\hyperlink{class_student_a13c0f8ec52693be9891b40e6988ee558}{operator!=}} (const \mbox{\hyperlink{class_student}{Student}} \&, const \mbox{\hyperlink{class_student}{Student}} \&)
+\begin{DoxyCompactList}\small\item\em Tikrina ar Studentu objektai nesutampa. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_student_a114f2b27223a1624fc5dba036e8eff03}\label{class_student_a114f2b27223a1624fc5dba036e8eff03}} 
+std\+::ostream \& \mbox{\hyperlink{class_student_a114f2b27223a1624fc5dba036e8eff03}{operator$<$$<$}} (std\+::ostream \&, const \mbox{\hyperlink{class_student}{Student}} \&)
+\begin{DoxyCompactList}\small\item\em Operatorius skirtas rankiniam Studento objekto ivedimui. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_student_a5bbf113a2041fb7a97690e1809263abd}\label{class_student_a5bbf113a2041fb7a97690e1809263abd}} 
+std\+::istream \& \mbox{\hyperlink{class_student_a5bbf113a2041fb7a97690e1809263abd}{operator$>$$>$}} (std\+::istream \&, \mbox{\hyperlink{class_student}{Student}} \&)
+\begin{DoxyCompactList}\small\item\em Operatorius skirtas rankiniam Studento objekto isvedimui. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Studentas \+: \mbox{\hyperlink{class_zmogus}{Zmogus}} objektas 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+3\+\_\+uzduotis/Studentas.\+h\item 
+3\+\_\+uzduotis/Studentas.\+cpp\end{DoxyCompactItemize}

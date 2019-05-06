@@ -1,6 +1,5 @@
 #include "Functions.h"
 
-
 int main()
 {
 	cout << std::string(76, '=') << endl;
