@@ -161,7 +161,7 @@ template <typename T> void generateFile(T& Studentai_kieti, T& Studentai_silpni)
 	writeToFile(Studentai_silpni, "OUTPUT_SILPNI.txt");
 }
 //--------------------
-template <typename T> void Failo_generavimas_v2(string filename, unsigned int n = 1000) { //sugeneruoja faila tiktais
+template <typename T> void Failo_generavimas_v2(string filename, unsigned int n) { //sugeneruoja faila tiktais
 	
 	T Studentai;
 	//Studentai.reserve(n); //tik vector'iui
@@ -180,7 +180,7 @@ template <typename T> void Failo_generavimas_v2(string filename, unsigned int n 
 
 }
 //--------------------
-template <typename T> void Failo_nuskaitymas(string file_name, string print = "print", string skirstymas = "neskirstyti", int strategija = 1) {
+template <typename T> void Failo_nuskaitymas(string file_name, string print, string skirstymas, int strategija) {
 	T Studentai;
 	string vardas{}, pavarde{};
 
