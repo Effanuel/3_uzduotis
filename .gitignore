@@ -35,6 +35,8 @@
 *.sln
 
 
+UnitTest/
+packages/
 
 .vs/
 Debug/

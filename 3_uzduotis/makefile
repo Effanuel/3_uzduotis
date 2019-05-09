@@ -1,22 +1,93 @@
+# CXX = g++
+# CC = gcc
+#
+#
+# TARGET_EXEC ?= project
+#
+# BUILD_DIR ?= ./build
+# SRC_DIRS ?= ./3_uzduotis
+# TARGET_DIR ?= ./bin
+#
+#
+# SRCS := ./3_uzduotis/Studentas.cpp ./3_uzduotis/3_uzduotis.cpp#$(find $(SRC_DIRS) -name "*.cpp")
+# OBJS := $(SRCS:%=$(BUILD_DIR)/%.o)#./build/Studentas.o ./build/3_uzduotis.o
+# DEPS := $(OBJS:.o=.d)
+#
+# # INC_DIRS := ./build ./bin
+# # INC_FLAGS := $(addprefix -I,$(INC_DIRS))
+#
+# CPPFLAGS ?= -MMD -MP -std=c++17 -O3
+#
+# $(TARGET_DIR)/$(TARGET_EXEC): $(OBJS)
+# 	$(MKDIR_P) $(dir $@)
+# 	$(CXX) $(OBJS) -o $@ $(LDFLAGS)
+#
+# $(BUILD_DIR)/%.cpp.o: %.cpp
+# 	$(MKDIR_P) $(dir $@)
+# 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $< -o $@
+#
+#
+# .PHONY: clean run all
+#
+# all: $(TARGET_DIR)/$(TARGET_EXEC)
+#
+#
+# run: all
+# 	$(TARGET_DIR)/$(TARGET_EXEC)
+#
+# clean:
+# 	$(RM) -r $(BUILD_DIR)
+# 	$(RM) -r $(TARGET_DIR)
+#
+#
+#
+# -include $(DEPS)
+#
+# MKDIR_P ?= mkdir -p
+#
 CXX = g++
 CC = gcc
-CFLAGS = -std=c++11
 
-.PHONY: all project clean
 
-all: project
+TARGET_EXEC ?= project
 
-project: 3_uzduotis.o Studentas.o
-	$(CXX) -o project 3_uzduotis.o Studentas.o
+BUILD_DIR ?= ./build
+#SRC_DIRS ?= ./3_uzduotis
+TARGET_DIR ?= ./bin
 
-3_uzduotis.o: 3_uzduotis.cpp
-	$(CXX) $(CFLAGS) -c 3_uzduotis.cpp -o 3_uzduotis.o
 
-Studentas.o: Studentas.cpp
-	$(CXX) $(CFLAGS) -c Studentas.cpp -o Studentas.o
+SRCS := Studentas.cpp 3_uzduotis.cpp#$(find $(SRC_DIRS) -name "*.cpp")
+OBJS := ./build/Studentas.o ./build/3_uzduotis.o
+DEPS := $(OBJS:.o=.d)
 
-test:	all
-	./3_uzduotis
+INC_DIRS := ./build ./bin
+INC_FLAGS := $(addprefix -I,$(INC_DIRS))
+
+CPPFLAGS ?= $(INC_FLAGS) -MMD -MP -std=c++17 -O3
+
+$(TARGET_DIR)/$(TARGET_EXEC): $(OBJS)
+	$(MKDIR_P) $(dir $@)
+	$(CXX) $(OBJS) -o $@ $(LDFLAGS)
+
+$(BUILD_DIR)/%.o: %.cpp
+	$(MKDIR_P) $(dir $@)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $< -o $@
+
+
+.PHONY: clean
+
+all: $(TARGET_DIR)/$(TARGET_EXEC)
+
+
+run: all
+	$(TARGET_DIR)/$(TARGET_EXEC)
 
 clean:
-	rm -f project *.o project.exe
+	$(RM) -r $(BUILD_DIR)
+	$(RM) -r $(TARGET_DIR)
+
+
+
+-include $(DEPS)
+
+MKDIR_P ?= mkdir -p
