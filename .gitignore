@@ -35,7 +35,9 @@
 *.sln
 
 
-UnitTest/
+#UnitTest/
+packages.config
+UnitTest.vcxproj
 packages/
 
 .vs/

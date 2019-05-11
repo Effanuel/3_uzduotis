@@ -1,19 +1,19 @@
 ﻿#include "Studentas.h"
 
 //--------------------
-double median(vector<double> arr) {
-	typedef vector<double>::size_type vecSize;
-	vecSize size = arr.size();
+double median(std::vector<double> arr) {
+	//typedef std::vector<double>::size_type vecSize;
+	std::size_t size = arr.size();
 	std::sort(arr.begin(), arr.end());
 	return size % 2 != 0 ? arr[size / 2] : (arr[size / 2 - 1] + arr[size / 2]) / 2;
 
 }
 //--------------------
-double vidurkis(vector<double> arr) {
+double vidurkis(std::vector<double> arr) {
 	return std::accumulate(arr.begin(), arr.end(), 0.0) / arr.size();
 }
 //--------------------
-double Student::galBalas(double(*kriterijus)(vector<double>)) const {
+double Student::galBalas(double(*kriterijus)(std::vector<double>)) const {
 	if (balai_.empty()) throw std::domain_error("negalima skaiciuoti tusciam vektoriui");
 	return 0.6 * kriterijus(balai_) + 0.4 * egz_;
 }
@@ -26,7 +26,7 @@ void Student::randomStudent() {
 	vardas_ = "Vardas" + std::to_string(int(distr(gen)*10001)); //pseudo unique numbers
 	pavarde_ = "Pavarde" + std::to_string(int(distr(gen)*9999));
 	balai_.resize(5); //5 namu darbai
-	generate(balai_.begin(), balai_.end(), []() {
+	std::generate(balai_.begin(), balai_.end(), []() {
 		return distr(gen);
 	});
 	egz_ = distr(gen);
@@ -115,17 +115,17 @@ double cin_and_checkFormat_in_interval(std::istream& in) {
 	return input;
 }
 
-//namespace Custom {
-//	void sort(vector<Student>& Studentai) {
-//		std::sort(Studentai.begin(), Studentai.end(), final_mark_sorting);
-//	}
-//	//void sort(list<Student>& Studentai) {
-//	//	Studentai.sort(final_mark_sorting);
-//	//}
-//	//void sort(deque<Student>& Studentai) {
-//	//	sort(Studentai.begin(), Studentai.end(), final_mark_sorting);
-//	//}
-//}
+namespace Custom {
+	void sort(std::vector<Student>& Studentai) {
+		std::sort(Studentai.begin(), Studentai.end(), final_mark_sorting);
+	}
+	//void sort(list<Student>& Studentai) {
+	//	Studentai.sort(final_mark_sorting);
+	//}
+	//void sort(deque<Student>& Studentai) {
+	//	sort(Studentai.begin(), Studentai.end(), final_mark_sorting);
+	//}
+}
 
 //--------------------
 bool final_mark_sorting(const Student &a, const Student &b)
@@ -133,7 +133,7 @@ bool final_mark_sorting(const Student &a, const Student &b)
 	return a.galBalas() < b.galBalas();
 }
 //--------------------
-int max_len(vector<string> data) { 
+int max_len(std::vector<string> data) { 
 
 	auto func = [](const string &a, const string &b) {return a.size() < b.size(); };
 	return (*std::max_element(data.begin(), data.end(), func)).size();
