@@ -44,8 +44,11 @@ Student& Student::operator=(const Student& s) {
 	if (&s == this) return *this;
 
 	Zmogus::operator=(s);
+
 	balai_ = s.balai_;
 	egz_ = s.egz_;
+
+	
 	return *this;
 
 }

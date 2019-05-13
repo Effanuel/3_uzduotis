@@ -25,8 +25,8 @@ public:
 	Zmogus& operator=(const Zmogus& s) {
 		if (&s == this) return *this;
 
-		vardas_ = s.vardas_;
-		pavarde_ = s.pavarde_;
+		vardas_ = s.vardas();
+		pavarde_ = s.pavarde();
 		return *this;
 	}
 	///Padaro Zmogus class'e abstrakcia

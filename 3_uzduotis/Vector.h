@@ -16,6 +16,8 @@ private:
 
 	void _reallocate(size_t);
 	size_t _exponentCapacity(size_t) const;
+	static void _deleteRange(T*, T*);
+
 public:
 	using value_type = T;
 	typedef T& reference;
@@ -26,7 +28,7 @@ public:
 	typedef std::reverse_iterator<const_iterator> const_reverse_iterator;
 
 
-	vector() : elem{ nullptr }, sz{ 0 }, cap{ 0 }  {}
+	vector() : sz{ 0 }, cap{ 0 }  {elem = new T[cap]; }
 	vector(int);
 	vector(size_t, T);
 	vector(const vector<T>&);
@@ -36,8 +38,6 @@ public:
 
 	size_t size() const { return sz; }
 	size_t capacity() const { return cap; }
-
-	//void resize(int count);
 	void setElem(int idx, T val);
 
 	vector<T>& operator=(const vector<T>&);
@@ -97,18 +97,19 @@ public:
 	void push_back(T&&);
 	template<class ... Args> void emplace_back(Args&&... args);
 	void pop_back();
+	size_t max_size() const;
 
 
 	
 };
 
 
-template<class T>
-void swap(T& a, T& b) {
-	T temp{ std::move(a) };
-	a = std::move(b);
-	b = std::move(temp);
-}
+//template<class T>
+//void swap(T& a, T& b) {
+//	T temp{ std::move(a) };
+//	a = std::move(b);
+//	b = std::move(temp);
+//}
 
 template<class T>
 vector<T>::vector(const vector<T>& v) : elem{ new T[v.sz] }, sz{ v.sz }, cap{ v.cap }	{
@@ -143,10 +144,9 @@ vector<T>::vector(std::initializer_list<T> il)
 
 template<class T>
 vector<T>::~vector() {
-	if (elem != nullptr) {
-		delete[] elem;
-		elem = nullptr;
-	}
+	if (elem == nullptr) return;
+	_deleteRange(elem, elem + sz);
+	delete[] elem;
 }
 
 
@@ -174,11 +174,6 @@ void vector<T>::setElem(int idx, T val) {
 
 
 
-//void vector::resize(int count) {
-//	if (count) throw std::logic_error("Cannot resize to a negative value");
-//	sz = count;
-//	for(int i = 0; i)
-//}
 template<class T>
 vector<T>& vector<T>::operator=(const vector<T>& v) {
 	if (&v == this) return *this;
@@ -395,6 +390,9 @@ void vector<T>::clear() {
 template<class T>
 void vector<T>::reserve(size_t mem) {
 	if (mem <= cap) return;
+	if (cap > max_size()) {
+		throw new std::length_error("max length exceeded");
+	}
 	cap = mem;
 	//_reallocate();
 }
@@ -402,19 +400,19 @@ template<class T>
 inline void vector<T>::resize(size_t s)
 {
 	if (s < sz) {
-		for (size_t i = sz; sz > s; --i)
+		for (size_t i = s; i < sz; ++i)
 			elem[i].~T();
-		cap = s;
-		_reallocate(cap);
 	}
 	else if (s > sz) {
-		reserve(s);
-
+		if (s > cap) {
+			cap = s;
+			_reallocate(cap);
+		}
 		for (size_t i = sz; i < s; ++i) {
 			elem[i] = T();
-		}
-		sz = s;
+		}	
 	}
+	sz = s;
 
 
 }
@@ -492,13 +490,34 @@ inline void vector<T>::pop_back()
 }
 
 template<class T>
+size_t vector<T>::max_size() const {
+	return std::numeric_limits<size_t>::max();
+}
+
+
+
+template<class T>
 size_t vector<T>::_exponentCapacity(size_t size) const {
+	if (capacity() > max_size() - capacity() / 2) {
+		return newSize;
+	}
+
 	const size_t multiple = cap * 1.5;
 
 	if (multiple < size) {
 		return size;
 	}
 	return multiple;
+}
+
+template<class T>
+inline void vector<T>::_deleteRange(T* begin, T* end)
+{
+	while (begin != end)
+	{
+		begin->~T();
+		++begin;
+	}
 }
 
 
@@ -510,6 +529,7 @@ inline void vector<T>::_reallocate(size_t min) //recreates vector to use new cap
 	std::memcpy(temp, elem, sz * sizeof(T));
 	delete[] elem;
 	elem = temp;
+	cap = newCap;
 }
 
 

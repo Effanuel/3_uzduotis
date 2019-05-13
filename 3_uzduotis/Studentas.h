@@ -18,14 +18,14 @@ class Student : public Zmogus
 {
 private:
 	///Studento namu darbu balai (5)
-	vector<double> balai_;
+	std::vector<double> balai_;
 	///Studento egzamino balas
 	double egz_;
 public:
 	///Konstruoja Studentas objekta
 	Student() : Zmogus(), egz_(0) { }
 	///Studento objeckto copy constructor'ius skirtas emplace_back
-	Student(string vardas, string pavarde, vector<double> balai, double egz) //copy constr, called on emplace_back
+	Student(string vardas, string pavarde, std::vector<double> balai, double egz) //copy constr, called on emplace_back
 		: Zmogus(vardas, pavarde), balai_(balai), egz_(egz) {}
 	///Studento objeckto copy constructor'ius
 	Student(const Student& v) //copy constr
@@ -35,9 +35,9 @@ public:
 	///Grazina egzamino bala
 	double egz() const { return egz_; }
 	///Grazina namu darbu balus
-	vector<double> balai() const { return balai_; }
+	std::vector<double> balai() const { return balai_; }
 	///Skaiciuoja galutini bala pagal mediana arba vidurki (default mediana)
-	double galBalas(double(*kriterijus) (vector<double>) = median) const;
+	double galBalas(double(*kriterijus) (std::vector<double>) = median) const;
 	///Tikrina ar Studentu objektai sutampa
 	friend bool operator==(const Student&, const Student&);
 	///Tikrina ar Studentu objektai nesutampa
@@ -66,9 +66,9 @@ bool final_mark_sorting(const Student &, const Student &);//+
 ///Pagalbine funkcija studentu sort'inimui abeceles tvarka
 bool alphabetical_sorting(const Student &, const Student &);//+
 ///Iskviecia copy constructor'iu ir sukuria viena studenta
-template <typename T> void Sukurti_studenta(T&, string, string, vector<double>, double);
+template <typename T> void Sukurti_studenta(T&, string, string, std::vector<double>, double);
 //--------------------
-template <typename T> void Sukurti_studenta(T& Studentai, string vardas, string pavarde, vector<double> balai, double egz) { //&
+template <typename T> void Sukurti_studenta(T& Studentai, string vardas, string pavarde, std::vector<double> balai, double egz) { //&
 	Studentai.emplace_back(vardas, pavarde, balai, egz);
 }
 

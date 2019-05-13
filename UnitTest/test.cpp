@@ -51,15 +51,17 @@ TEST(Sorting, Custom_sort) {
 
 
 TEST(Generation, File_generation) {
-	Failo_generavimas_v2<vector<Student>>("../3_uzduotis/OUTPUT.txt", 1000);
-	EXPECT_EQ(1000, fileSize("../3_uzduotis/OUTPUT.txt"));
+	Failo_generavimas_v2<std::vector<Student>>("OUTPUT.txt", 1000);
+	EXPECT_EQ(1000, fileSize("OUTPUT.txt"));
 }
 
 
 TEST(Generation, File_split) {
-	Failo_generavimas_v2<vector<Student>>("../3_uzduotis/OUTPUT.txt", 1000);
-	Failo_nuskaitymas<vector<Student>>("../3_uzduotis/OUTPUT.txt", "neprint", "skirstyti", 1);
+	Failo_generavimas_v2<std::vector<Student>>("OUTPUT.txt", 1000);
+	Failo_nuskaitymas<std::vector<Student>>("OUTPUT.txt", "neprint", "skirstyti", 1);
 	EXPECT_EQ(1000,
-		fileSize("../3_uzduotis/OUTPUT_KIETI.txt") +
-		fileSize("../3_uzduotis/OUTPUT_SILPNI.txt"));
+		fileSize("OUTPUT_KIETI.txt") +
+		fileSize("OUTPUT_SILPNI.txt"));
+	EXPECT_NE(0, fileSize("OUTPUT_SILPNI.txt"));
+	EXPECT_NE(0, fileSize("OUTPUT_SILPNI.txt"));
 }
