@@ -3,6 +3,7 @@
 
 ## Prerequisites
 1. GNU C++ Compiler
+2. *Optional: **gtest** for Unit Testing*
 
 ## Installation
 1. [Atsisiūskite naujausią versiją.]()
