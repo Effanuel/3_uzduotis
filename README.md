@@ -14,6 +14,7 @@
 cd 3_uzduotis
 make run
 ```
+---
 
 ## Releases
 ### [v1.10](https://github.com/Effanuel/3_uzduotis/releases/tag/v1.11)
@@ -57,8 +58,9 @@ make run
     </tbody>
 </table>
 
+---
 
-### [v1.20](www.google.com)
+### [v1.20](https://github.com/Effanuel/3_uzduotis/releases/tag/v1.20)
 
 ### Added overloaded operators:
 ```C++
@@ -67,8 +69,25 @@ friend bool operator!=(const Student&, const Student&);
 friend std::ostream& operator<<(std::ostream&, const Student&);
 friend std::istream& operator>>(std::istream&, Student&);
 ```
+---
+### [v1.50](https://github.com/Effanuel/3_uzduotis/releases/tag/v1.52)
+### Base class Zmogus:
+* **protected** members: ```vardas_```, ```pavarde_```;
+* Base class ```Zmogus``` yra abstract;
 
+
+#### Constructors:
+```c++
+Zmogus(string v = "", string p = "");
+Zmogus(const Zmogus& p);
+Zmogus(Zmogus&& a);
+```
+
+
+---
 
 ### [v2.0](https://github.com/Effanuel/3_uzduotis/releases/tag/v2.0)
 
 ![Unit Test](https://github.com/Effanuel/3_uzduotis/blob/master/Unit%20Tests.png)
+
+---
