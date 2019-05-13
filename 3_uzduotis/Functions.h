@@ -110,8 +110,8 @@ template <typename T> void Print_table(T&, int, int);
 
 //--------------------
 void random_num_generator(std::vector<double>& balai, double& egz) {
-	static std::mt19937 gen;
-	gen.seed(std::random_device()());
+	static std::mt19937 gen(0); //random_device kazkodel veikia tik su VS
+	//gen.seed(std::random_device()());
 	static std::uniform_real_distribution<double> distr(1, 10);
 
 	balai.resize(5); //5 namu darbai
