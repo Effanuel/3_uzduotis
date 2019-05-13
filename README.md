@@ -6,14 +6,13 @@
 2. *Optional: **gtest** for Unit Testing*
 
 ## Installation
-1. [Atsisiūskite naujausią versiją.]()
+1. [Atsisiūskite naujausią versiją.](https://github.com/Effanuel/3_uzduotis/releases/tag/v2.0)
 2. Extract failus.
 3. Per command-line:
 
 ```
 cd 3_uzduotis
-make all
-project
+make run
 ```
 
 ## Releases
@@ -68,3 +67,8 @@ friend bool operator!=(const Student&, const Student&);
 friend std::ostream& operator<<(std::ostream&, const Student&);
 friend std::istream& operator>>(std::istream&, Student&);
 ```
+
+
+### [v2.0](https://github.com/Effanuel/3_uzduotis/releases/tag/v2.0)
+
+![Unit Test](https://github.com/Effanuel/3_uzduotis/blob/master/Unit%20Tests.png)
