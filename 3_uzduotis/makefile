@@ -16,7 +16,7 @@ Studentas.o: Studentas.cpp
 	$(CXX) $(CFLAGS) -c Studentas.cpp -o Studentas.o
 
 test:	all
-	./3_uzduotis
+	./project
 
 clean:
 	rm -f project *.o project.exe
