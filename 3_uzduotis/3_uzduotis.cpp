@@ -27,7 +27,7 @@ int main()
 			Failo_generavimas_v2<vector<Student>>("OUTPUT.txt", 10000);
 			Timer laikas;
 
-			Failo_nuskaitymas<vector<Student>>("output.txt", "neprint", "skirstyti", strategija);
+			Failo_nuskaitymas<vector<Student>>("OUTPUT.TXT", "neprint", "skirstyti", strategija);
 			cout << "strategija:(" << strategija << "):suskirstymas <vector>\t(n = 10,000): " << laikas.elapsed() << " s" << endl; //end
 			break;
 		}
