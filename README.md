@@ -11,8 +11,7 @@
 
 ```
 cd 3_uzduotis
-make all
-project
+make run
 ```
 
 ## Releases
