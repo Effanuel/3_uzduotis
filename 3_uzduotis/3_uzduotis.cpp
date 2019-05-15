@@ -5,44 +5,65 @@ int main()
 	cout << std::string(76, '=') << endl;
 
 	int choice; 
-	cout << "1 - Ivesti data rankomis;\n2 - Skaityti data is failo \"kursiokai.txt\";\n3 - Sugeneruos failus (OUTPUT, OUTPUT_SILPNI, OUTPUT_KIETI) is 1000 studentu;\n4 - std::vector<class Student : public Zmogus> greicio testavimas\n" << std::string(76, '=') << endl;
+	cout << "1 - Ivesti data rankomis;\n2 - Skaityti data is failo \"kursiokai.txt\";\n3 - Sugeneruos failus (OUTPUT, OUTPUT_SILPNI, OUTPUT_KIETI) is 1000 studentu;\n4 - std::std::vector<class Student : public Zmogus> greicio testavimas\n" << std::string(76, '=') << endl;
 	choice = cin_and_checkFormat_in_interval<int>(1, 4);
 	constexpr int strategija = 1;
 	try {
 		switch (choice) {
 		case 1: {
-			Duomenu_ivedimas<vector<Student>>();
+			Duomenu_ivedimas<std::vector<Student>>();
 			break;
 		}
 		case 2:
-			Failo_nuskaitymas<vector<Student>>("kursiokai.txt", "print", "neskirstyti", strategija);
+			Failo_nuskaitymas<std::vector<Student>>("kursiokai.txt", "print", "neskirstyti", strategija);
 			break;
 		case 3:
-			Failo_generavimas_v2<vector<Student>>("OUTPUT.txt", 1000); // generate file
-			Failo_nuskaitymas<vector<Student>>("OUTPUT.txt", "print", "skirstyti", strategija); //split file
+			Failo_generavimas_v2<std::vector<Student>>("OUTPUT.txt", 1000); // generate file
+			Failo_nuskaitymas<std::vector<Student>>("OUTPUT.txt", "print", "skirstyti", strategija); //split file
 			cout << "Done." << endl;
 			break;
 		case 4: {
-			Failo_generavimas_v2<vector<Student>>("OUTPUT.txt", 10000);//10k
+			Failo_generavimas_v2<std::vector<Student>>("OUTPUT.txt", 10000);//10k
 			Timer laikas;
 
-			Failo_nuskaitymas<vector<Student>>("OUTPUT.txt", "neprint", "skirstyti", strategija);
+			Failo_nuskaitymas<std::vector<Student>>("OUTPUT.txt", "neprint", "skirstyti", strategija);
 			cout << "Suskirstymas <std::vector> (n = 10,000): " << laikas.elapsed() << " s" << endl; //end
 			
-			Failo_generavimas_v2<vector<Student>>("OUTPUT.txt", 100000);//100k
+			Failo_generavimas_v2<std::vector<Student>>("OUTPUT.txt", 100000);//100k
 			laikas.reset();
-			Failo_nuskaitymas<vector<Student>>("OUTPUT.txt", "neprint", "skirstyti", strategija);
+			Failo_nuskaitymas<std::vector<Student>>("OUTPUT.txt", "neprint", "skirstyti", strategija);
 			cout << "Suskirstymas <std::vector> (n = 100,000): " << laikas.elapsed() << " s" << endl; //end
 
-			Failo_generavimas_v2<vector<Student>>("OUTPUT.txt", 300000);//300k
+			Failo_generavimas_v2<std::vector<Student>>("OUTPUT.txt", 300000);//300k
 			laikas.reset();
-			Failo_nuskaitymas<vector<Student>>("OUTPUT.txt", "neprint", "skirstyti", strategija);
+			Failo_nuskaitymas<std::vector<Student>>("OUTPUT.txt", "neprint", "skirstyti", strategija);
 			cout << "Suskirstymas <std::vector> (n = 300,000): " << laikas.elapsed() << " s" << endl; //end
 
-			Failo_generavimas_v2<vector<Student>>("OUTPUT.txt", 500000); //500k
+			Failo_generavimas_v2<std::vector<Student>>("OUTPUT.txt", 500000); //500k
 			laikas.reset();
-			Failo_nuskaitymas<vector<Student>>("OUTPUT.txt", "neprint", "skirstyti", strategija);
+			Failo_nuskaitymas<std::vector<Student>>("OUTPUT.txt", "neprint", "skirstyti", strategija);
 			cout << "Suskirstymas <std::vector> (n = 500,000): " << laikas.elapsed() << " s" << endl; //end
+
+			Failo_generavimas_v2<custom::vector<Student>>("OUTPUT.txt", 10000); //10k
+			laikas.reset();
+			Failo_nuskaitymas<custom::vector<Student>>("OUTPUT.txt", "neprint", "skirstyti", strategija);
+			cout << "Suskirstymas <custom::vector> (n = 10,000): " << laikas.elapsed() << " s" << endl; //end
+
+			Failo_generavimas_v2<custom::vector<Student>>("OUTPUT.txt", 100000); //100k
+			laikas.reset();
+			Failo_nuskaitymas<custom::vector<Student>>("OUTPUT.txt", "neprint", "skirstyti", strategija);
+			cout << "Suskirstymas <custom::vector> (n = 100,000): " << laikas.elapsed() << " s" << endl; //end
+
+			Failo_generavimas_v2<custom::vector<Student>>("OUTPUT.txt", 300000); //300k
+			laikas.reset();
+			Failo_nuskaitymas<custom::vector<Student>>("OUTPUT.txt", "neprint", "skirstyti", strategija);
+			cout << "Suskirstymas <custom::vector> (n = 300,000): " << laikas.elapsed() << " s" << endl; //end
+
+			Failo_generavimas_v2<custom::vector<Student>>("OUTPUT.txt", 500000); //500k
+			laikas.reset();
+			Failo_nuskaitymas<custom::vector<Student>>("OUTPUT.txt", "neprint", "skirstyti", strategija);
+			cout << "Suskirstymas <custom::vector> (n = 500,000): " << laikas.elapsed() << " s" << endl; //end
+
 			cout << "Done." << endl;
 			break;
 		}
