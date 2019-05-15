@@ -45,10 +45,11 @@ namespace custom {
 		vector<T>& operator=(vector&&);
 		vector<T>& operator=(std::initializer_list<T>);
 
+		template<typename Y>
+		friend vector<Y> operator+(const vector<Y>&, const vector<Y>&);
 
-		friend vector<T> operator+(const vector<T>&, const vector<T>&);
-
-		friend vector<T> operator-(const vector<T>&, const vector<T>&);
+		template<typename Y>
+		friend vector<Y> operator-(const vector<Y>&, const vector<Y>&);
 
 		bool operator==(const vector<T>&);
 		bool operator!=(const vector<T>&);
