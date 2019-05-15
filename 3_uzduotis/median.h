@@ -1,8 +1,10 @@
 #pragma once
 #include <vector>
 //#include "Vector.h"
-
 using std::vector;
+
+
+//using std::vector;
 /**
 Skaiciuoja mediana is namu darbu balu ir egzamino
 */

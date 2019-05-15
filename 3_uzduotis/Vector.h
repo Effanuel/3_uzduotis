@@ -453,7 +453,6 @@ template<class T>
 void vector<T>::push_back(const T& val) {
 	
 	if (sz == cap) {
-		cap <<= 1;
 		_reallocate(cap + 1);
 	}
 
@@ -499,7 +498,7 @@ size_t vector<T>::max_size() const {
 template<class T>
 size_t vector<T>::_exponentCapacity(size_t size) const {
 	if (capacity() > max_size() - capacity() / 2) {
-		return newSize;
+		return size;
 	}
 
 	const size_t multiple = cap * 1.5;
@@ -521,12 +520,14 @@ inline void vector<T>::_deleteRange(T* begin, T* end)
 }
 
 
-template<class T>
+template<typename T>
 inline void vector<T>::_reallocate(size_t min) //recreates vector to use new capacity
 {
 	const size_t newCap = _exponentCapacity(min);
 	T* temp = new T[newCap];
-	std::memcpy(temp, elem, sz * sizeof(T));
+	for (size_t i = 0; i < sz; ++i) {
+		temp[i] = elem[i];
+	}
 	delete[] elem;
 	elem = temp;
 	cap = newCap;
