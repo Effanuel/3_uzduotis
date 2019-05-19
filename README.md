@@ -86,7 +86,7 @@ Zmogus(Zmogus&& a);
 
 ---
 
-### [v2.0](https://github.com/Effanuel/3_uzduotis/releases/tag/v2.0)
+### Unit Tests [v2.0](https://github.com/Effanuel/3_uzduotis/releases/tag/v2.0)
 
 ![Unit Test](https://github.com/Effanuel/3_uzduotis/blob/master/Unit%20Tests.png)
 
