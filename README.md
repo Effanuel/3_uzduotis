@@ -6,7 +6,7 @@
 2. *Optional: **gtest** for Unit Testing*
 
 ## Installation
-1. [Atsisiūskite naujausią versiją.](https://github.com/Effanuel/3_uzduotis/releases/tag/v2.0)
+1. [Atsisiūskite naujausią versiją.](https://github.com/Effanuel/3_uzduotis/archive/v2.01.zip)
 2. Extract failus.
 3. Per command-line:
 
