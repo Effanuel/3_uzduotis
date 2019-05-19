@@ -19,8 +19,8 @@ double Student::galBalas(double(*kriterijus)(std::vector<double>)) const {
 }
 //--------------------
 void Student::randomStudent() {
-	static std::mt19937 gen;
-	gen.seed(std::random_device()());
+	static std::mt19937 gen(0);
+	//gen.seed(std::random_device()());
 	static std::uniform_real_distribution<double> distr(1, 10);
 
 	vardas_ = "Vardas" + std::to_string(int(distr(gen)*10001)); //pseudo unique numbers
