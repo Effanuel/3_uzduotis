@@ -14,6 +14,13 @@
 cd 3_uzduotis
 make run
 ```
+*Programos executable yra generuojamas **./3_uzduotis/bin** directory*
+*Norint paleisti programą iš naujo:
+```
+cd bin
+project
+```
+
 ---
 
 ## Releases
