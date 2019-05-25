@@ -92,8 +92,12 @@ Zmogus(Zmogus&& a);
 
 ---
 
-### Unit Tests [v2.0](https://github.com/Effanuel/3_uzduotis/releases/tag/v2.0)
+### [v2.0](https://github.com/Effanuel/3_uzduotis/releases/tag/v2.0)
 
+### Unit Tests
 ![Unit Test](https://github.com/Effanuel/3_uzduotis/blob/master/Unit%20Tests.png)
+
+### Doxygen example
+![Doxygen example](https://github.com/Effanuel/3_uzduotis/blob/master/doxygen_example.png)
 
 ---
